@@ -20,8 +20,18 @@ export const SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_LST_PTR = "LstPtr";
 export const SPINALTWIN_ADMIN_SERVICE_APP_GROUP_RELATION_NAME = "SpinalTwinListHasAppGroup"
 export const SPINALTWIN_ADMIN_SERVICE_APP_RELATION_NAME = "SpinalTwinAppGroupHasApp"
 export const SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME = "SpinalTwinUserProfileListHasUserProfile"
+export const SPINALTWIN_ADMIN_SERVICE_USER_RELATION_NAME = "SpinalTwinUserListHasUser"
+
+//ContextName
+export const USER_PROFILE_LIST = "UserProfileList"
+export const USER_LIST = "UserList"
+export const ROLE_LIST = "RoleList"
+export const SPINAL_DESCRIPTION = "SpinalTwinDescription"
+export const DATA_LIST = "DataList"
 
 
 // Error
 const ERROR_PREFIX: string = "SpinalTwinAdmin Service App Error: ";
+export const USER_BASE_EMPTY = "User Base Empty";
+export const USER_NOT_FOUND = "User Not Found";
 export const CANNOT_CREATE_INTERNAL_ERROR = ERROR_PREFIX + 'Internal error: cannot create process';
