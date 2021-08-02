@@ -12,6 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SpinalTwinAdminUserProfile = void 0;
 const spinal_env_viewer_graph_service_1 = require("spinal-env-viewer-graph-service");
 const constant_1 = require("../constant");
+const spinalTwinAdminGraph_service_1 = require("./spinalTwinAdminGraph.service");
+let spinalTwinGraph = new spinalTwinAdminGraph_service_1.SpinalTwinAdminGraph;
 /**
  *
  * @export
@@ -21,22 +23,24 @@ class SpinalTwinAdminUserProfile {
     constructor() { }
     /**
      * @param {SpinalTwinUserProfile | string} spinalTwinUserProfile
-     * @param {string} contextId
      * @returns {Promise<string>}
      * @memberof SpinalTwinAdminUserProfile
      */
-    createUserProfile(spinalTwinUserProfile, contextId) {
-        if (typeof spinalTwinUserProfile === "string")
-            spinalTwinUserProfile = { name: spinalTwinUserProfile };
-        const groupId = spinal_env_viewer_graph_service_1.SpinalGraphService.createNode(spinalTwinUserProfile, undefined);
-        const result = spinal_env_viewer_graph_service_1.SpinalGraphService.addChildInContext(contextId, groupId, contextId, constant_1.SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST).then((res) => __awaiter(this, void 0, void 0, function* () {
-            return res;
-        }))
-            .catch((e) => {
-            console.error(e);
-            return Promise.reject(Error(constant_1.CANNOT_CREATE_INTERNAL_ERROR));
+    createUserProfile(spinalTwinUserProfile) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (typeof spinalTwinUserProfile === "string")
+                spinalTwinUserProfile = { name: spinalTwinUserProfile };
+            const groupId = spinal_env_viewer_graph_service_1.SpinalGraphService.createNode(spinalTwinUserProfile, undefined);
+            let context = yield spinalTwinGraph.getContext(constant_1.USER_PROFILE_LIST);
+            const result = spinal_env_viewer_graph_service_1.SpinalGraphService.addChildInContext(context.info.id.get(), groupId, context.info.id.get(), constant_1.SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST).then((res) => __awaiter(this, void 0, void 0, function* () {
+                return res;
+            }))
+                .catch((e) => {
+                console.error(e);
+                return Promise.reject(Error(constant_1.CANNOT_CREATE_INTERNAL_ERROR));
+            });
+            return result;
         });
-        return result;
     }
     ;
     /**
@@ -56,8 +60,11 @@ class SpinalTwinAdminUserProfile {
      * @returns {void}
      * @memberof SpinalTwinAdminUserProfile
      */
-    getAllUserProfile(contextId) {
-        return spinal_env_viewer_graph_service_1.SpinalGraphService.getChildrenInContext(contextId, contextId);
+    getAllUserProfile() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let context = yield spinalTwinGraph.getContext(constant_1.USER_PROFILE_LIST);
+            return spinal_env_viewer_graph_service_1.SpinalGraphService.getChildrenInContext(context.info.id.get(), context.info.id.get());
+        });
     }
     ;
     /**

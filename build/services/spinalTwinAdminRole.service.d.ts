@@ -8,11 +8,10 @@ import { SpinalTwinRole } from "../models/SpinalTwinRole.model";
 export declare class SpinalTwinAdminRole {
     /**
     * @param {SpinalTwinRole|string} spinalTwinRole
-    * @param {string} contextId
     * @returns {Promise<string>}
     * @memberof SpinalTwinAdminRole
     */
-    createRole(spinalTwinRole: SpinalTwinRole | string, contextId: string): Promise<SpinalNode<any>>;
+    createRole(spinalTwinRole: SpinalTwinRole | string): Promise<SpinalNode<any>>;
     /**
     * @param {string} roleId
     * @returns {void}

@@ -11,4 +11,12 @@ export declare const SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_LST_PTR = "LstPt
 export declare const SPINALTWIN_ADMIN_SERVICE_APP_GROUP_RELATION_NAME = "SpinalTwinListHasAppGroup";
 export declare const SPINALTWIN_ADMIN_SERVICE_APP_RELATION_NAME = "SpinalTwinAppGroupHasApp";
 export declare const SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME = "SpinalTwinUserProfileListHasUserProfile";
+export declare const SPINALTWIN_ADMIN_SERVICE_USER_RELATION_NAME = "SpinalTwinUserListHasUser";
+export declare const USER_PROFILE_LIST = "UserProfileList";
+export declare const USER_LIST = "UserList";
+export declare const ROLE_LIST = "RoleList";
+export declare const SPINAL_DESCRIPTION = "SpinalTwinDescription";
+export declare const DATA_LIST = "DataList";
+export declare const USER_BASE_EMPTY = "User Base Empty";
+export declare const USER_NOT_FOUND = "User Not Found";
 export declare const CANNOT_CREATE_INTERNAL_ERROR: string;

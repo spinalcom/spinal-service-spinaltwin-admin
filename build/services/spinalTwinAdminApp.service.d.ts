@@ -13,7 +13,7 @@ export declare class ServiceSpinalTwinApp {
      * @returns {Promise<string>}
      * @memberof ServiceSpinalTwinApp
      */
-    createSpinalTwinGroup(spinalTwinGroup: SpinalTwinGroup | string, contextId: string): Promise<string>;
+    createSpinalTwinGroup(spinalTwinGroup: SpinalTwinGroup | string): Promise<string>;
     /**
      * @param {string} spinalTwinGroupId
      * @returns {void}
@@ -25,7 +25,7 @@ export declare class ServiceSpinalTwinApp {
        * @returns {void}
        * @memberof ServiceSpinalTwinApp
        */
-    getAllSpinalTwinGroup(contextId: string): Promise<import("spinal-env-viewer-graph-service/declarations/GraphManagerService").SpinalNodeRef[]>;
+    getAllSpinalTwinGroup(): Promise<import("spinal-env-viewer-graph-service/declarations/GraphManagerService").SpinalNodeRef[]>;
     /**
        * @param {string} spinalTwinGroupId
        * @returns {void}
@@ -39,13 +39,13 @@ export declare class ServiceSpinalTwinApp {
        * @returns {void}
        * @memberof ServiceSpinalTwinApp
        */
-    addAppToSpinalTwinGroup(spinalTwinGroupId: string, spinalTwinAppId: string, relationType: string): any;
+    addAppToSpinalTwinGroup(spinalTwinGroupId: string, spinalTwinAppId: string): any;
     /**
      * @param {SpinalTwinApp | string} spinalTwinApp
      * @returns {void}
      * @memberof ServiceSpinalTwinApp
      */
-    createApp(spinalTwinApp: SpinalTwinApp | string): string;
+    createApp(spinalTwinGroupId: string, spinalTwinApp: SpinalTwinApp | string): string;
     /**
      * @param {SpinalTwinGroup | string} spinalTwinGroup
      * @param {string} spinalTwinGroupId

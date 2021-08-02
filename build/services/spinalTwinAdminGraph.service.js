@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SpinalTwinAdminGraph = void 0;
 const spinal_env_viewer_graph_service_1 = require("spinal-env-viewer-graph-service");
@@ -20,7 +29,7 @@ class SpinalTwinAdminGraph {
         const graph = new spinal_env_viewer_graph_service_1.SpinalGraph("SpinalTwinAdmin");
         const DataListContext = new spinal_env_viewer_graph_service_1.SpinalContext("DataList");
         const SpinaltwinDescContext = new spinal_env_viewer_graph_service_1.SpinalContext("SpinalTwinDescription");
-        const UserProfileContext = new spinal_env_viewer_graph_service_1.SpinalContext("UserProfile");
+        const UserProfileContext = new spinal_env_viewer_graph_service_1.SpinalContext("UserProfileList");
         const UserListContext = new spinal_env_viewer_graph_service_1.SpinalContext("UserList");
         const RoleListContext = new spinal_env_viewer_graph_service_1.SpinalContext("RoleList");
         promises.push(graph.addContext(DataListContext), graph.addContext(SpinaltwinDescContext), graph.addContext(UserListContext), graph.addContext(UserProfileContext), graph.addContext(RoleListContext));
@@ -49,6 +58,17 @@ class SpinalTwinAdminGraph {
         });
         return Promise.all(promises).then(() => {
             return;
+        });
+    }
+    getContext(name) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const graph = spinal_env_viewer_graph_service_1.SpinalGraphService.getGraph();
+            const contexts = yield graph.getContext(name);
+            /*if (name && name.trim().length > 0) {
+                const found: any = contexts.filter(el => el.getName().get() === name);
+                return found ? found.info.get() : undefined;
+            }*/
+            return contexts;
         });
     }
 }

@@ -12,6 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SpinalTwinAdminRole = void 0;
 const spinal_env_viewer_graph_service_1 = require("spinal-env-viewer-graph-service");
 const constant_1 = require("../constant");
+const spinalTwinAdminGraph_service_1 = require("./spinalTwinAdminGraph.service");
+let spinalTwinGraph = new spinalTwinAdminGraph_service_1.SpinalTwinAdminGraph;
 /**
  *
  * @export
@@ -20,22 +22,24 @@ const constant_1 = require("../constant");
 class SpinalTwinAdminRole {
     /**
     * @param {SpinalTwinRole|string} spinalTwinRole
-    * @param {string} contextId
     * @returns {Promise<string>}
     * @memberof SpinalTwinAdminRole
     */
-    createRole(spinalTwinRole, contextId) {
-        if (typeof spinalTwinRole === "string")
-            spinalTwinRole = { name: spinalTwinRole };
-        const roleId = spinal_env_viewer_graph_service_1.SpinalGraphService.createNode(spinalTwinRole, undefined);
-        const result = spinal_env_viewer_graph_service_1.SpinalGraphService.addChildInContext(contextId, roleId, contextId, constant_1.SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST).then((res) => __awaiter(this, void 0, void 0, function* () {
-            return res;
-        }))
-            .catch((e) => {
-            console.error(e);
-            return Promise.reject(Error(constant_1.CANNOT_CREATE_INTERNAL_ERROR));
+    createRole(spinalTwinRole) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (typeof spinalTwinRole === "string")
+                spinalTwinRole = { name: spinalTwinRole };
+            const roleId = spinal_env_viewer_graph_service_1.SpinalGraphService.createNode(spinalTwinRole, undefined);
+            let context = yield spinalTwinGraph.getContext("RoleList");
+            const result = spinal_env_viewer_graph_service_1.SpinalGraphService.addChildInContext(context.info.id.get(), roleId, context.info.id.get(), constant_1.SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST).then((res) => __awaiter(this, void 0, void 0, function* () {
+                return res;
+            }))
+                .catch((e) => {
+                console.error(e);
+                return Promise.reject(Error(constant_1.CANNOT_CREATE_INTERNAL_ERROR));
+            });
+            return result;
         });
-        return result;
     }
     ;
     /**

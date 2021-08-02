@@ -12,6 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ServiceSpinalTwinApp = void 0;
 const spinal_env_viewer_graph_service_1 = require("spinal-env-viewer-graph-service");
 const constant_1 = require("../constant");
+const spinalTwinAdminGraph_service_1 = require("./spinalTwinAdminGraph.service");
+let spinalTwinGraph = new spinalTwinAdminGraph_service_1.SpinalTwinAdminGraph;
 /**
  *
  * @export
@@ -25,17 +27,20 @@ class ServiceSpinalTwinApp {
      * @returns {Promise<string>}
      * @memberof ServiceSpinalTwinApp
      */
-    createSpinalTwinGroup(spinalTwinGroup, contextId) {
-        if (typeof spinalTwinGroup === "string")
-            spinalTwinGroup = { name: spinalTwinGroup };
-        spinalTwinGroup.type = constant_1.SPINALAPP_TYPE;
-        const groupId = spinal_env_viewer_graph_service_1.SpinalGraphService.createNode(spinalTwinGroup, undefined);
-        return spinal_env_viewer_graph_service_1.SpinalGraphService.addChildInContext(contextId, groupId, contextId, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_GROUP_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST).then(() => __awaiter(this, void 0, void 0, function* () {
-            return groupId;
-        }))
-            .catch((e) => {
-            console.error(e);
-            return Promise.reject(Error(constant_1.CANNOT_CREATE_INTERNAL_ERROR));
+    createSpinalTwinGroup(spinalTwinGroup) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (typeof spinalTwinGroup === "string")
+                spinalTwinGroup = { name: spinalTwinGroup };
+            spinalTwinGroup.type = constant_1.SPINALAPP_TYPE;
+            const groupId = spinal_env_viewer_graph_service_1.SpinalGraphService.createNode(spinalTwinGroup, undefined);
+            let context = yield spinalTwinGraph.getContext(constant_1.SPINAL_DESCRIPTION);
+            return spinal_env_viewer_graph_service_1.SpinalGraphService.addChildInContext(context.info.id.get(), groupId, context.info.id.get(), constant_1.SPINALTWIN_ADMIN_SERVICE_APP_GROUP_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST).then(() => __awaiter(this, void 0, void 0, function* () {
+                return groupId;
+            }))
+                .catch((e) => {
+                console.error(e);
+                return Promise.reject(Error(constant_1.CANNOT_CREATE_INTERNAL_ERROR));
+            });
         });
     }
     ;
@@ -61,8 +66,11 @@ class ServiceSpinalTwinApp {
        * @returns {void}
        * @memberof ServiceSpinalTwinApp
        */
-    getAllSpinalTwinGroup(contextId) {
-        return spinal_env_viewer_graph_service_1.SpinalGraphService.getChildrenInContext(contextId, contextId);
+    getAllSpinalTwinGroup() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let context = yield spinalTwinGraph.getContext(constant_1.SPINAL_DESCRIPTION);
+            return spinal_env_viewer_graph_service_1.SpinalGraphService.getChildrenInContext(context.info.id.get(), context.info.id.get());
+        });
     }
     ;
     /**
@@ -81,20 +89,20 @@ class ServiceSpinalTwinApp {
        * @returns {void}
        * @memberof ServiceSpinalTwinApp
        */
-    addAppToSpinalTwinGroup(spinalTwinGroupId, spinalTwinAppId, relationType) {
-        return spinal_env_viewer_graph_service_1.SpinalGraphService.addChildInContext(spinalTwinGroupId, spinalTwinAppId, spinalTwinGroupId, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_NAME, relationType);
+    addAppToSpinalTwinGroup(spinalTwinGroupId, spinalTwinAppId) {
+        return spinal_env_viewer_graph_service_1.SpinalGraphService.addChildInContext(spinalTwinGroupId, spinalTwinAppId, spinalTwinGroupId, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST);
     }
     /**
      * @param {SpinalTwinApp | string} spinalTwinApp
      * @returns {void}
      * @memberof ServiceSpinalTwinApp
      */
-    createApp(spinalTwinApp) {
+    createApp(spinalTwinGroupId, spinalTwinApp) {
         if (typeof spinalTwinApp === "string")
             spinalTwinApp = { name: spinalTwinApp };
         spinalTwinApp.type = constant_1.SPINALAPP_TYPE;
         const appId = spinal_env_viewer_graph_service_1.SpinalGraphService.createNode(spinalTwinApp, undefined);
-        return appId;
+        return this.addAppToSpinalTwinGroup(spinalTwinGroupId, appId);
     }
     /**
      * @param {SpinalTwinGroup | string} spinalTwinGroup

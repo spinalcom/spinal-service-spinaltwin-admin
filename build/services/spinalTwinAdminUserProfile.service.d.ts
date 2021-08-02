@@ -9,11 +9,10 @@ export declare class SpinalTwinAdminUserProfile {
     constructor();
     /**
      * @param {SpinalTwinUserProfile | string} spinalTwinUserProfile
-     * @param {string} contextId
      * @returns {Promise<string>}
      * @memberof SpinalTwinAdminUserProfile
      */
-    createUserProfile(spinalTwinUserProfile: SpinalTwinUserProfile | string, contextId: string): Promise<SpinalNode<any>>;
+    createUserProfile(spinalTwinUserProfile: SpinalTwinUserProfile | string): Promise<SpinalNode<any>>;
     /**
      * @param {string} userProfileId
      * @returns {void}
@@ -25,7 +24,7 @@ export declare class SpinalTwinAdminUserProfile {
      * @returns {void}
      * @memberof SpinalTwinAdminUserProfile
      */
-    getAllUserProfile(contextId: string): Promise<import("spinal-env-viewer-graph-service/declarations/GraphManagerService").SpinalNodeRef[]>;
+    getAllUserProfile(): Promise<import("spinal-env-viewer-graph-service/declarations/GraphManagerService").SpinalNodeRef[]>;
     /**
      * @param {string} userProfileId
      * @param {string} roleId

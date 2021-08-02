@@ -1,3 +1,4 @@
+import { SpinalNode } from "spinal-env-viewer-graph-service";
 /**
  *
  * @export
@@ -12,4 +13,5 @@ export declare class SpinalTwinAdminGraph {
      * @memberof SpinalTwinAdminGraph
      */
     init(directory: spinal.Directory<any>, filename: string): Promise<void>;
+    getContext(name?: string): Promise<SpinalNode<any>>;
 }
