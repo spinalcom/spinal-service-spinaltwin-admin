@@ -1,5 +1,5 @@
-import { SpinalNode } from "spinal-env-viewer-graph-service";
-import { SpinalTwinUserProfile } from "../models/SpinalTwinUserProfile.model";
+import { SpinalNode } from 'spinal-env-viewer-graph-service';
+import { SpinalTwinUserProfile } from '../models/SpinalTwinUserProfile.model';
 /**
  *
  * @export
@@ -24,7 +24,7 @@ export declare class SpinalTwinAdminUserProfile {
      * @returns {void}
      * @memberof SpinalTwinAdminUserProfile
      */
-    getAllUserProfile(): Promise<import("spinal-env-viewer-graph-service/declarations/GraphManagerService").SpinalNodeRef[]>;
+    getAllUserProfile(contextId: any): Promise<import("spinal-env-viewer-graph-service/declarations/GraphManagerService").SpinalNodeRef[]>;
     /**
      * @param {string} userProfileId
      * @param {string} roleId

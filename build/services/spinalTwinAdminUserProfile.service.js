@@ -13,7 +13,7 @@ exports.SpinalTwinAdminUserProfile = void 0;
 const spinal_env_viewer_graph_service_1 = require("spinal-env-viewer-graph-service");
 const constant_1 = require("../constant");
 const spinalTwinAdminGraph_service_1 = require("./spinalTwinAdminGraph.service");
-let spinalTwinGraph = new spinalTwinAdminGraph_service_1.SpinalTwinAdminGraph;
+let spinalTwinGraph = new spinalTwinAdminGraph_service_1.SpinalTwinAdminGraph();
 /**
  *
  * @export
@@ -28,11 +28,12 @@ class SpinalTwinAdminUserProfile {
      */
     createUserProfile(spinalTwinUserProfile) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (typeof spinalTwinUserProfile === "string")
+            if (typeof spinalTwinUserProfile === 'string')
                 spinalTwinUserProfile = { name: spinalTwinUserProfile };
             const groupId = spinal_env_viewer_graph_service_1.SpinalGraphService.createNode(spinalTwinUserProfile, undefined);
             let context = yield spinalTwinGraph.getContext(constant_1.USER_PROFILE_LIST);
-            const result = spinal_env_viewer_graph_service_1.SpinalGraphService.addChildInContext(context.info.id.get(), groupId, context.info.id.get(), constant_1.SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST).then((res) => __awaiter(this, void 0, void 0, function* () {
+            const result = spinal_env_viewer_graph_service_1.SpinalGraphService.addChildInContext(context.info.id.get(), groupId, context.info.id.get(), constant_1.SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST)
+                .then((res) => __awaiter(this, void 0, void 0, function* () {
                 return res;
             }))
                 .catch((e) => {
@@ -42,31 +43,26 @@ class SpinalTwinAdminUserProfile {
             return result;
         });
     }
-    ;
     /**
      * @param {string} userProfileId
      * @returns {void}
      * @memberof SpinalTwinAdminUserProfile
      */
     getUserProfile(userProfileId) {
-        return spinal_env_viewer_graph_service_1.SpinalGraphService.findNode(userProfileId)
-            .then(node => {
+        return spinal_env_viewer_graph_service_1.SpinalGraphService.findNode(userProfileId).then((node) => {
             return node;
         });
     }
-    ;
     /**
      * @param {string} contextId
      * @returns {void}
      * @memberof SpinalTwinAdminUserProfile
      */
-    getAllUserProfile() {
+    getAllUserProfile(contextId) {
         return __awaiter(this, void 0, void 0, function* () {
-            let context = yield spinalTwinGraph.getContext(constant_1.USER_PROFILE_LIST);
-            return spinal_env_viewer_graph_service_1.SpinalGraphService.getChildrenInContext(context.info.id.get(), context.info.id.get());
+            return spinal_env_viewer_graph_service_1.SpinalGraphService.getChildrenInContext(contextId, contextId);
         });
     }
-    ;
     /**
      * @param {string} userProfileId
      * @param {string} roleId
@@ -83,7 +79,6 @@ class SpinalTwinAdminUserProfile {
             return spinal_env_viewer_graph_service_1.SpinalGraphService.modifyNode(userProfileId, userProfile);
         });
     }
-    ;
     /**
      * @param {string} userProfileId
      * @param {string} roleId
@@ -91,7 +86,6 @@ class SpinalTwinAdminUserProfile {
      * @memberof SpinalTwinAdminUserProfile
      */
     removeRoleToUserProfile(userProfileId, roleId) { }
-    ;
     /**
      * @param {string} userProfileId
      * @param {SpinalTwinUserProfile} userProfile
@@ -99,7 +93,6 @@ class SpinalTwinAdminUserProfile {
      * @memberof SpinalTwinAdminUserProfile
      */
     updateUserProfile(userProfile, userProfileId) { }
-    ;
     /**
      * @param {string} userProfileId
      * @param {string} roleId
@@ -107,7 +100,6 @@ class SpinalTwinAdminUserProfile {
      * @memberof SpinalTwinAdminUserProfile
      */
     deleteUserProfile(userProfileId) { }
-    ;
 }
 exports.SpinalTwinAdminUserProfile = SpinalTwinAdminUserProfile;
 //# sourceMappingURL=spinalTwinAdminUserProfile.service.js.map
