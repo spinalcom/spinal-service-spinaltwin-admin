@@ -48,9 +48,9 @@ if (typeof gRoot.spinal.SpinalTwinAdminUser === 'undefined') {
     gRoot.spinal.spinalTwinAdminUser = new spinalTwinAdminUser_service_1.SpinalTwinAdminUser();
 }
 // @ts-ignore
-exports.SpinalTwinServiceUserProfile = gRoot.spinal.SpinalTwinAdminUserProfile;
+exports.SpinalTwinServiceUserProfile = gRoot.spinal.spinalTwinAdminUserProfile;
 // @ts-ignore
-exports.SpinalTwinServiceRole = gRoot.spinal.SpinalTwinAdminRole;
+exports.SpinalTwinServiceRole = gRoot.spinal.spinalTwinAdminRole;
 // @ts-ignore
-exports.SpinalTwinServiceUser = gRoot.spinal.SpinalTwinAdminUser;
+exports.SpinalTwinServiceUser = gRoot.spinal.spinalTwinAdminUser;
 //# sourceMappingURL=index.js.map

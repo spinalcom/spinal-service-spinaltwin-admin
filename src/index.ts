@@ -51,10 +51,10 @@ if (typeof gRoot.spinal.SpinalTwinAdminUser === 'undefined') {
 }
 // @ts-ignore
 export const SpinalTwinServiceUserProfile =
-  gRoot.spinal.SpinalTwinAdminUserProfile;
+  gRoot.spinal.spinalTwinAdminUserProfile;
 // @ts-ignore
-export const SpinalTwinServiceRole = gRoot.spinal.SpinalTwinAdminRole;
+export const SpinalTwinServiceRole = gRoot.spinal.spinalTwinAdminRole;
 // @ts-ignore
-export const SpinalTwinServiceUser = gRoot.spinal.SpinalTwinAdminUser;
+export const SpinalTwinServiceUser = gRoot.spinal.spinalTwinAdminUser;
 
 export { SpinalTwinRole, SpinalTwinUser, SpinalTwinUserProfile };
