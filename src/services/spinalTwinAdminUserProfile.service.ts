@@ -70,8 +70,12 @@ export class SpinalTwinAdminUserProfile {
    * @returns {void}
    * @memberof SpinalTwinAdminUserProfile
    */
-  public async getAllUserProfile(contextId) {
-    return SpinalGraphService.getChildrenInContext(contextId, contextId);
+  public async getAllUserProfile() {
+    let context = await spinalTwinGraph.getContext(USER_PROFILE_LIST);
+    return SpinalGraphService.getChildrenInContext(
+      context.info.id.get(),
+      context.info.id.get()
+    );
   }
 
   /**
