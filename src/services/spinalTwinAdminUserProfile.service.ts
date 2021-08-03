@@ -36,7 +36,7 @@ export class SpinalTwinAdminUserProfile {
       spinalTwinUserProfile,
       undefined
     );
-    let context = await spinalTwinGraph.getContext('UserProfile');
+    let context = await spinalTwinGraph.getContext(USER_PROFILE_LIST);
     const result = SpinalGraphService.addChildInContext(
       context.info.id.get(),
       groupId,
@@ -71,7 +71,7 @@ export class SpinalTwinAdminUserProfile {
    * @memberof SpinalTwinAdminUserProfile
    */
   public async getAllUserProfile() {
-    let context = await spinalTwinGraph.getContext('UserProfile');
+    let context = await spinalTwinGraph.getContext(USER_PROFILE_LIST);
     return SpinalGraphService.getChildrenInContext(
       context.info.id.get(),
       context.info.id.get()

@@ -24,7 +24,7 @@ export declare class SpinalTwinAdminUserProfile {
      * @returns {void}
      * @memberof SpinalTwinAdminUserProfile
      */
-    getAllUserProfile(contextId: any): Promise<import("spinal-env-viewer-graph-service/declarations/GraphManagerService").SpinalNodeRef[]>;
+    getAllUserProfile(): Promise<import("spinal-env-viewer-graph-service/declarations/GraphManagerService").SpinalNodeRef[]>;
     /**
      * @param {string} userProfileId
      * @param {string} roleId

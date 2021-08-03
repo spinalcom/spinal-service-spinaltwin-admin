@@ -13,7 +13,7 @@ exports.SpinalTwinAdminRole = void 0;
 const spinal_env_viewer_graph_service_1 = require("spinal-env-viewer-graph-service");
 const constant_1 = require("../constant");
 const spinalTwinAdminGraph_service_1 = require("./spinalTwinAdminGraph.service");
-let spinalTwinGraph = new spinalTwinAdminGraph_service_1.SpinalTwinAdminGraph;
+let spinalTwinGraph = new spinalTwinAdminGraph_service_1.SpinalTwinAdminGraph();
 /**
  *
  * @export
@@ -21,17 +21,18 @@ let spinalTwinGraph = new spinalTwinAdminGraph_service_1.SpinalTwinAdminGraph;
  */
 class SpinalTwinAdminRole {
     /**
-    * @param {SpinalTwinRole|string} spinalTwinRole
-    * @returns {Promise<string>}
-    * @memberof SpinalTwinAdminRole
-    */
+     * @param {SpinalTwinRole|string} spinalTwinRole
+     * @returns {Promise<string>}
+     * @memberof SpinalTwinAdminRole
+     */
     createRole(spinalTwinRole) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (typeof spinalTwinRole === "string")
+            if (typeof spinalTwinRole === 'string')
                 spinalTwinRole = { name: spinalTwinRole };
             const roleId = spinal_env_viewer_graph_service_1.SpinalGraphService.createNode(spinalTwinRole, undefined);
-            let context = yield spinalTwinGraph.getContext("RoleList");
-            const result = spinal_env_viewer_graph_service_1.SpinalGraphService.addChildInContext(context.info.id.get(), roleId, context.info.id.get(), constant_1.SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST).then((res) => __awaiter(this, void 0, void 0, function* () {
+            let context = yield spinalTwinGraph.getContext(constant_1.ROLE_LIST);
+            const result = spinal_env_viewer_graph_service_1.SpinalGraphService.addChildInContext(context.info.id.get(), roleId, context.info.id.get(), constant_1.SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST)
+                .then((res) => __awaiter(this, void 0, void 0, function* () {
                 return res;
             }))
                 .catch((e) => {
@@ -41,16 +42,15 @@ class SpinalTwinAdminRole {
             return result;
         });
     }
-    ;
     /**
-    * @param {string} roleId
-    * @returns {void}
-    * @memberof SpinalTwinAdminRole
-    */
+     * @param {string} roleId
+     * @returns {void}
+     * @memberof SpinalTwinAdminRole
+     */
     getRoleNode(roleId) {
         const realNode = spinal_env_viewer_graph_service_1.SpinalGraphService.getRealNode(roleId);
         if (realNode) {
-            return realNode.contextIds._attribute_names.find(id => {
+            return realNode.contextIds._attribute_names.find((id) => {
                 const node = spinal_env_viewer_graph_service_1.SpinalGraphService.getRealNode(id);
                 if (!node)
                     return false;
@@ -58,55 +58,47 @@ class SpinalTwinAdminRole {
             });
         }
     }
-    ;
     /**
-    * @param {string} roleId
-    * @returns {void}
-    * @memberof SpinalTwinAdminRole
-    */
+     * @param {string} roleId
+     * @returns {void}
+     * @memberof SpinalTwinAdminRole
+     */
     getAllRole() {
         return __awaiter(this, void 0, void 0, function* () {
-            let context = yield spinalTwinGraph.getContext("RoleList");
-            return spinal_env_viewer_graph_service_1.SpinalGraphService.getChildrenInContext(context.info.id.get(), context.info.id.get())
-                .then(node => {
+            let context = yield spinalTwinGraph.getContext('RoleList');
+            return spinal_env_viewer_graph_service_1.SpinalGraphService.getChildrenInContext(context.info.id.get(), context.info.id.get()).then((node) => {
                 return node;
             });
         });
     }
-    ;
     /**
-    * @param {string} roleId
-    * @returns {void}
-    * @memberof SpinalTwinAdminRole
-    */
+     * @param {string} roleId
+     * @returns {void}
+     * @memberof SpinalTwinAdminRole
+     */
     getRole(roleId) {
-        return spinal_env_viewer_graph_service_1.SpinalGraphService.findNode(roleId)
-            .then(node => {
+        return spinal_env_viewer_graph_service_1.SpinalGraphService.findNode(roleId).then((node) => {
             return node;
         });
     }
-    ;
     /**
-    * @param {SpinalTwinRole|string} spinalTwinRole
-    * @param {string} roleId
-    * @returns {void}
-    * @memberof SpinalTwinAdminRole
-    */
+     * @param {SpinalTwinRole|string} spinalTwinRole
+     * @param {string} roleId
+     * @returns {void}
+     * @memberof SpinalTwinAdminRole
+     */
     updateRole(spinalTwinRole, roleId) {
         if (typeof roleId === 'undefined') {
             return;
         }
         return spinal_env_viewer_graph_service_1.SpinalGraphService.modifyNode(roleId, spinalTwinRole);
     }
-    ;
     /**
-    * @param {string} roleId
-    * @returns {void}
-    * @memberof SpinalTwinAdminRole
-    */
-    deleteRole(roleId) {
-    }
-    ;
+     * @param {string} roleId
+     * @returns {void}
+     * @memberof SpinalTwinAdminRole
+     */
+    deleteRole(roleId) { }
 }
 exports.SpinalTwinAdminRole = SpinalTwinAdminRole;
 //# sourceMappingURL=spinalTwinAdminRole.service.js.map

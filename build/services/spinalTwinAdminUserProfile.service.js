@@ -58,9 +58,10 @@ class SpinalTwinAdminUserProfile {
      * @returns {void}
      * @memberof SpinalTwinAdminUserProfile
      */
-    getAllUserProfile(contextId) {
+    getAllUserProfile() {
         return __awaiter(this, void 0, void 0, function* () {
-            return spinal_env_viewer_graph_service_1.SpinalGraphService.getChildrenInContext(contextId, contextId);
+            let context = yield spinalTwinGraph.getContext(constant_1.USER_PROFILE_LIST);
+            return spinal_env_viewer_graph_service_1.SpinalGraphService.getChildrenInContext(context.info.id.get(), context.info.id.get());
         });
     }
     /**
