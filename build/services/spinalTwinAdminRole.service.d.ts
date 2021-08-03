@@ -23,6 +23,12 @@ export declare class SpinalTwinAdminRole {
     * @returns {void}
     * @memberof SpinalTwinAdminRole
     */
+    getAllRole(): Promise<any[]>;
+    /**
+    * @param {string} roleId
+    * @returns {void}
+    * @memberof SpinalTwinAdminRole
+    */
     getRole(roleId: string): any;
     /**
     * @param {SpinalTwinRole|string} spinalTwinRole

@@ -1,11 +1,11 @@
 {
   "name": "spinal-service-spinaltwin-admin",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
-  "main": "dist/index.js",
+  "main": "build/index.js",
   "scripts": {
     "build": "rm -fr build && tsc",
-    "run": "tsc && node dist/index.js",
+    "run": "tsc && node build/index.js",
     "dev": "rm -fr build && tsc --watch",
     "test": "NODE_ENV=test mocha --check-leaks -r ts-node/register -r tsconfig-paths/register \"test/**/*.spec.ts\"",
     "docs": "jsdoc2md --no-cache --files 'src/**/*.ts' --configure jsdoc2md.json --template 'Markdown Templates/README.hbs' > README.md && doctoc README.md"

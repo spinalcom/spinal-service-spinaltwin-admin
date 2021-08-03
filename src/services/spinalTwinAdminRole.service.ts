@@ -57,6 +57,19 @@ getRoleNode(roleId: string) {
   * @returns {void}
   * @memberof SpinalTwinAdminRole
   */
+async getAllRole(): Promise<any[]> {
+  let context = await spinalTwinGraph.getContext("RoleList");
+  return SpinalGraphService.getChildrenInContext(context.info.id.get(), context.info.id.get())
+          .then(node => {
+              return node;
+          });
+};
+
+  /**
+  * @param {string} roleId
+  * @returns {void}
+  * @memberof SpinalTwinAdminRole
+  */
 getRole(roleId: string): any {
     return SpinalGraphService.findNode(roleId)
             .then(node => {

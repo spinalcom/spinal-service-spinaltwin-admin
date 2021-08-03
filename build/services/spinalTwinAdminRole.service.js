@@ -64,6 +64,21 @@ class SpinalTwinAdminRole {
     * @returns {void}
     * @memberof SpinalTwinAdminRole
     */
+    getAllRole() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let context = yield spinalTwinGraph.getContext("RoleList");
+            return spinal_env_viewer_graph_service_1.SpinalGraphService.getChildrenInContext(context.info.id.get(), context.info.id.get())
+                .then(node => {
+                return node;
+            });
+        });
+    }
+    ;
+    /**
+    * @param {string} roleId
+    * @returns {void}
+    * @memberof SpinalTwinAdminRole
+    */
     getRole(roleId) {
         return spinal_env_viewer_graph_service_1.SpinalGraphService.findNode(roleId)
             .then(node => {

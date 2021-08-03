@@ -1,3 +1,4 @@
+"use strict";
 /*
  * Copyright 2019 SpinalCom - www.spinalcom.com
  *
@@ -21,39 +22,35 @@
  *  with this file. If not, see
  *  <http://resources.spinalcom.com/licenses.pdf>.
  */
-
-import { SpinalTwinAdminRole } from './src/services/spinalTwinAdminRole.service';
-import { SpinalTwinAdminUserProfile } from './src/services/spinalTwinAdminUserProfile.service';
-import { SpinalTwinAdminUser} from './src/services/spinalTwinAdminUser.service';
-
-import { SpinalTwinRole } from './src/models/SpinalTwinRole.model';
-import { SpinalTwinUser } from './src/models/SpinalTwinUser.model';
-import { SpinalTwinUserProfile } from './src/models/SpinalTwinUserProfile.model';
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SpinalTwinServiceUser = exports.SpinalTwinServiceRole = exports.SpinalTwinServiceUserProfile = void 0;
+const spinalTwinAdminRole_service_1 = require("./services/spinalTwinAdminRole.service");
+const spinalTwinAdminUserProfile_service_1 = require("./services/spinalTwinAdminUserProfile.service");
+const spinalTwinAdminUser_service_1 = require("./services/spinalTwinAdminUser.service");
 // @ts-ignore
 const gRoot = typeof window === 'undefined' ? global : window;
 // @ts-ignore
-if (typeof gRoot.spinal === 'undefined') gRoot.spinal = {};
+if (typeof gRoot.spinal === 'undefined')
+    gRoot.spinal = {};
 // @ts-ignore
-
 if (typeof gRoot.spinal.SpinalTwinAdminRole === 'undefined') {
-  // @ts-ignore
-  gRoot.spinal.spinalTwinAdminRole = new SpinalTwinAdminRole();
+    // @ts-ignore
+    gRoot.spinal.spinalTwinAdminRole = new spinalTwinAdminRole_service_1.SpinalTwinAdminRole();
 }
 // @ts-ignore
 if (typeof gRoot.spinal.SpinalTwinAdminUserProfile === 'undefined') {
-  // @ts-ignore
-  gRoot.spinal.spinalTwinAdminUserProfile = new SpinalTwinAdminUserProfile();
+    // @ts-ignore
+    gRoot.spinal.spinalTwinAdminUserProfile = new spinalTwinAdminUserProfile_service_1.SpinalTwinAdminUserProfile();
 }
 // @ts-ignore
 if (typeof gRoot.spinal.SpinalTwinAdminUser === 'undefined') {
-  // @ts-ignore
-  gRoot.spinal.spinalTwinAdminUser = new SpinalTwinAdminUser();
+    // @ts-ignore
+    gRoot.spinal.spinalTwinAdminUser = new spinalTwinAdminUser_service_1.SpinalTwinAdminUser();
 }
 // @ts-ignore
-export const SpinalTwinServiceUserProfile = gRoot.spinal.SpinalTwinAdminUserProfile;
+exports.SpinalTwinServiceUserProfile = gRoot.spinal.SpinalTwinAdminUserProfile;
 // @ts-ignore
-export const SpinalTwinServiceRole = gRoot.spinal.SpinalTwinAdminRole;
+exports.SpinalTwinServiceRole = gRoot.spinal.SpinalTwinAdminRole;
 // @ts-ignore
-export const SpinalTwinServiceUser = gRoot.spinal.SpinalTwinAdminUser;
-
-export { SpinalTwinRole, SpinalTwinUser, SpinalTwinUserProfile }
+exports.SpinalTwinServiceUser = gRoot.spinal.SpinalTwinAdminUser;
+//# sourceMappingURL=index.js.map
