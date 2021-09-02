@@ -96,7 +96,7 @@ export class SpinalTwinAdminRole {
    * @memberof SpinalTwinAdminRole
    */
   async updateRole(
-    spinalTwinRole: SpinalTwinRole,
+    spinalTwinRole: SpinalTwinRole | string,
     roleId: string
   ): Promise<any> {
     if (
@@ -107,7 +107,7 @@ export class SpinalTwinAdminRole {
     }
     const node = SpinalGraphService.getRealNode(roleId);
     const res = await SpinalGraphService.modifyNode(node.info.id.get(), <any>{
-      name: spinalTwinRole.name,
+      name: spinalTwinRole,
     });
     return res;
   }
