@@ -96,10 +96,16 @@ export class SpinalTwinAdminRole {
    * @memberof SpinalTwinAdminRole
    */
   updateRole(spinalTwinRole: SpinalTwinRole, roleId: string) {
-    if (typeof roleId === 'undefined') {
+    if (
+      typeof roleId === 'undefined' ||
+      typeof spinalTwinRole === 'undefined'
+    ) {
       return;
     }
-    return SpinalGraphService.modifyNode(roleId, <any>{
+    const node = SpinalGraphService.getRealNode(roleId);
+    console.log(node);
+    console.log(spinalTwinRole);
+    return SpinalGraphService.modifyNode(node.info.id.get(), <any>{
       name: spinalTwinRole.name,
     });
   }
