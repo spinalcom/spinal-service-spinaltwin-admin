@@ -105,8 +105,7 @@ export class SpinalTwinAdminRole {
     ) {
       return;
     }
-    const node = SpinalGraphService.getRealNode(roleId);
-    const res = await SpinalGraphService.modifyNode(node.info.id.get(), <any>{
+    const res = await SpinalGraphService.modifyNode(roleId, <any>{
       name: spinalTwinRole,
     });
     return res;
