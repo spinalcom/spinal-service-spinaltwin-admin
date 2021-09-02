@@ -90,16 +90,18 @@ export class SpinalTwinAdminRole {
   }
 
   /**
-   * @param {SpinalTwinRole|string} spinalTwinRole
+   * @param {SpinalTwinRole} spinalTwinRole
    * @param {string} roleId
    * @returns {void}
    * @memberof SpinalTwinAdminRole
    */
-  updateRole(spinalTwinRole: SpinalTwinRole | string, roleId: string) {
+  updateRole(spinalTwinRole: SpinalTwinRole, roleId: string) {
     if (typeof roleId === 'undefined') {
       return;
     }
-    return SpinalGraphService.modifyNode(roleId, <any>spinalTwinRole);
+    return SpinalGraphService.modifyNode(roleId, <any>{
+      name: spinalTwinRole.name,
+    });
   }
 
   /**

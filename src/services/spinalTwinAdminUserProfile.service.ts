@@ -110,7 +110,18 @@ export class SpinalTwinAdminUserProfile {
   public updateUserProfile(
     userProfile: SpinalTwinUserProfile,
     userProfileId: string
-  ) {}
+  ) {
+    if (typeof userProfileId === 'undefined') {
+      return;
+    } else {
+      return SpinalGraphService.modifyNode(userProfileId, <any>{
+        name: userProfile.name,
+        appList: userProfile.appList,
+        roleList: userProfile.roleList,
+        buildContextList: userProfile.buildContextList,
+      });
+    }
+  }
 
   /**
    * @param {string} userProfileId
