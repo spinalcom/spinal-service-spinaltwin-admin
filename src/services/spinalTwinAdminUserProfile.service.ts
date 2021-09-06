@@ -110,17 +110,21 @@ export class SpinalTwinAdminUserProfile {
   public updateUserProfile(
     userProfile: SpinalTwinUserProfile,
     userProfileId: string
-  ) {
-    if (typeof userProfileId === 'undefined') {
+  ): SpinalNode<any> {
+    if (
+      typeof userProfileId === 'undefined' ||
+      typeof userProfile === 'undefined'
+    ) {
       return;
-    } else {
-      return SpinalGraphService.modifyNode(userProfileId, <any>{
-        name: userProfile.name,
-        appList: userProfile.appList,
-        roleList: userProfile.roleList,
-        buildContextList: userProfile.buildContextList,
-      });
     }
+    const node = SpinalGraphService.getRealNode(userProfileId);
+    if (node) {
+      node.info.name.set(userProfile.name);
+      node.info.appList.set(userProfile.appList);
+      node.info.buildContextList.set(userProfile.buildContextList);
+      node.info.roleList.set(userProfile.roleList);
+    }
+    return node;
   }
 
   /**

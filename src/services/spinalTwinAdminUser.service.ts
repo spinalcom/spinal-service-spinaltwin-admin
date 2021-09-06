@@ -1,4 +1,7 @@
-import { SpinalGraphService } from 'spinal-env-viewer-graph-service';
+import {
+  SpinalGraphService,
+  SpinalNode,
+} from 'spinal-env-viewer-graph-service';
 import 'spinal-core-connectorjs_type';
 import {
   SPINALAPP_TYPE,
@@ -158,17 +161,19 @@ export class SpinalTwinAdminUser {
 
   public addUserProfileToUser(userId: string, userProfileId: string) {}
 
-  public updateUser(user: SpinalTwinUser, userId: string) {
-    if (typeof userId === 'undefined') {
+  public updateUser(user: SpinalTwinUser, userId: string): SpinalNode<any> {
+    if (typeof userId === 'undefined' || typeof user === 'undefined') {
       return;
-    } else {
-      return SpinalGraphService.modifyNode(userId, <any>{
-        name: user.name,
-        firstname: user.firstname,
-        email: user.email,
-        userProfileId: user.userProfileId,
-      });
     }
+    const node = SpinalGraphService.getRealNode(userId);
+    if (node) {
+      node.info.name.set(user.name);
+      node.info.email.set(user.email);
+      node.info.firstname.set(user.firstname);
+      node.info.userProfileId.set(user.userProfileId);
+    }
+
+    return node;
   }
 
   public deleteUser(userId: string) {}

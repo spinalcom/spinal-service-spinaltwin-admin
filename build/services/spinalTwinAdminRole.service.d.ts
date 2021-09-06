@@ -31,12 +31,12 @@ export declare class SpinalTwinAdminRole {
      */
     getRole(roleId: string): any;
     /**
-     * @param {SpinalTwinRole|string} spinalTwinRole
+     * @param {SpinalTwinRole} spinalTwinRole
      * @param {string} roleId
      * @returns {void}
      * @memberof SpinalTwinAdminRole
      */
-    updateRole(spinalTwinRole: SpinalTwinRole | string, roleId: string): boolean;
+    updateRole(spinalTwinRole: SpinalTwinRole | string, roleId: string): SpinalNode<any>;
     /**
      * @param {string} roleId
      * @returns {void}

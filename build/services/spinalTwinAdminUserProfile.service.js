@@ -93,7 +93,20 @@ class SpinalTwinAdminUserProfile {
      * @returns {void}
      * @memberof SpinalTwinAdminUserProfile
      */
-    updateUserProfile(userProfile, userProfileId) { }
+    updateUserProfile(userProfile, userProfileId) {
+        if (typeof userProfileId === 'undefined' ||
+            typeof userProfile === 'undefined') {
+            return;
+        }
+        const node = spinal_env_viewer_graph_service_1.SpinalGraphService.getRealNode(userProfileId);
+        if (node) {
+            node.info.name.set(userProfile.name);
+            node.info.appList.set(userProfile.appList);
+            node.info.buildContextList.set(userProfile.buildContextList);
+            node.info.roleList.set(userProfile.roleList);
+        }
+        return node;
+    }
     /**
      * @param {string} userProfileId
      * @param {string} roleId

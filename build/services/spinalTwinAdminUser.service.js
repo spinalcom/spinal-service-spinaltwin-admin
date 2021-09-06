@@ -14,7 +14,7 @@ const spinal_env_viewer_graph_service_1 = require("spinal-env-viewer-graph-servi
 require("spinal-core-connectorjs_type");
 const constant_1 = require("../constant");
 const spinalTwinAdminGraph_service_1 = require("./spinalTwinAdminGraph.service");
-let spinalTwinGraph = new spinalTwinAdminGraph_service_1.SpinalTwinAdminGraph;
+let spinalTwinGraph = new spinalTwinAdminGraph_service_1.SpinalTwinAdminGraph();
 /**
  *
  * @export
@@ -22,10 +22,10 @@ let spinalTwinGraph = new spinalTwinAdminGraph_service_1.SpinalTwinAdminGraph;
  */
 class SpinalTwinAdminUser {
     /**
-    * @param {SpinalTwinUser|string} user
-    * @returns {Promise<SpinalTwinUser | string>}
-    * @memberof SpinalTwinAdminUser
-    */
+     * @param {SpinalTwinUser|string} user
+     * @returns {Promise<SpinalTwinUser | string>}
+     * @memberof SpinalTwinAdminUser
+     */
     createUser(user) {
         return this.findEmail(user.email)
             .then((exist) => __awaiter(this, void 0, void 0, function* () {
@@ -43,59 +43,58 @@ class SpinalTwinAdminUser {
             return Promise.resolve(e);
         });
     }
-    ;
     getUserByID(id) { }
-    ;
     getAllUser(contextId) { }
-    ;
     /**
-    * @param {string} id
-    * @param {string} email
-    * @param {string} password
-    * @returns {Promise<SpinalTwinUser | string>}
-    * @memberof SpinalTwinAdminUser
-    */
+     * @param {string} id
+     * @param {string} email
+     * @param {string} password
+     * @returns {Promise<SpinalTwinUser | string>}
+     * @memberof SpinalTwinAdminUser
+     */
     getUser(id, email, password) {
         return __awaiter(this, void 0, void 0, function* () {
             let context = yield spinalTwinGraph.getContext(constant_1.USER_LIST);
             if (typeof email === 'string' && typeof password === 'string')
                 return this.findUserWithEmailPassword(email, password);
-            return spinal_env_viewer_graph_service_1.SpinalGraphService.getChildren(context.info.id.get(), [constant_1.SPINALTWIN_ADMIN_SERVICE_USER_RELATION_NAME])
+            return spinal_env_viewer_graph_service_1.SpinalGraphService.getChildren(context.info.id.get(), [
+                constant_1.SPINALTWIN_ADMIN_SERVICE_USER_RELATION_NAME,
+            ])
                 .then((children) => {
                 if (children.length < 0) {
                     return Promise.reject(constant_1.USER_BASE_EMPTY);
                 }
                 for (let i = 0; i < children.length; i = i + 1) {
-                    if (children[i].hasOwnProperty('id')
-                        && children[i].id.get() === id) {
+                    if (children[i].hasOwnProperty('id') && children[i].id.get() === id) {
                         return Promise.resolve(children[i]);
                     }
                 }
                 return Promise.resolve(constant_1.USER_NOT_FOUND);
-            }).catch(((e) => {
+            })
+                .catch((e) => {
                 console.error(e);
                 return Promise.resolve(e);
-            }));
+            });
         });
     }
     addNode(userId, childId, relationName, relationType) { }
-    ;
     /**
-    * @param {string} email
-    * @returns {Promise<boolean>}
-    * @memberof SpinalTwinAdminUser
-    */
+     * @param {string} email
+     * @returns {Promise<boolean>}
+     * @memberof SpinalTwinAdminUser
+     */
     findEmail(email) {
         return __awaiter(this, void 0, void 0, function* () {
             let context = yield spinalTwinGraph.getContext(constant_1.USER_LIST);
-            return spinal_env_viewer_graph_service_1.SpinalGraphService.getChildren(context.info.id.get(), [constant_1.SPINALTWIN_ADMIN_SERVICE_USER_RELATION_NAME])
-                .then((children) => {
+            return spinal_env_viewer_graph_service_1.SpinalGraphService.getChildren(context.info.id.get(), [
+                constant_1.SPINALTWIN_ADMIN_SERVICE_USER_RELATION_NAME,
+            ]).then((children) => {
                 if (children.length < 0) {
                     return Promise.resolve(false);
                 }
                 for (let i = 0; i < children.length; i = i + 1) {
-                    if (children[i].hasOwnProperty('email')
-                        && children[i].email.get() === email) {
+                    if (children[i].hasOwnProperty('email') &&
+                        children[i].email.get() === email) {
                         return Promise.resolve(true);
                     }
                 }
@@ -104,40 +103,52 @@ class SpinalTwinAdminUser {
         });
     }
     /**
-    * @param {string} email
-    * @param {string} password
-    * @returns {Promise<SpinalTwinUser>}
-    * @memberof SpinalTwinAdminUser
-    */
+     * @param {string} email
+     * @param {string} password
+     * @returns {Promise<SpinalTwinUser>}
+     * @memberof SpinalTwinAdminUser
+     */
     findUserWithEmailPassword(email, password) {
         return __awaiter(this, void 0, void 0, function* () {
             let context = yield spinalTwinGraph.getContext(constant_1.USER_LIST);
-            return spinal_env_viewer_graph_service_1.SpinalGraphService.getChildren(context.info.id.get(), [constant_1.SPINALTWIN_ADMIN_SERVICE_USER_RELATION_NAME])
+            return spinal_env_viewer_graph_service_1.SpinalGraphService.getChildren(context.info.id.get(), [
+                constant_1.SPINALTWIN_ADMIN_SERVICE_USER_RELATION_NAME,
+            ])
                 .then((children) => {
                 if (children.length < 0) {
                     return Promise.reject(constant_1.USER_BASE_EMPTY);
                 }
                 for (let i = 0; i < children.length; i = i + 1) {
-                    if (children[i].hasOwnProperty('email')
-                        && children[i].email.get() === email
-                        && children[i].hasOwnProperty('password')
-                        && children[i].password.get() === password) {
+                    if (children[i].hasOwnProperty('email') &&
+                        children[i].email.get() === email &&
+                        children[i].hasOwnProperty('password') &&
+                        children[i].password.get() === password) {
                         return Promise.resolve(children[i]);
                     }
                 }
                 return Promise.resolve(constant_1.USER_NOT_FOUND);
-            }).catch(((e) => {
+            })
+                .catch((e) => {
                 console.error(e);
                 return Promise.resolve(e);
-            }));
+            });
         });
     }
     addUserProfileToUser(userId, userProfileId) { }
-    ;
-    updateUser(userId) { }
-    ;
+    updateUser(user, userId) {
+        if (typeof userId === 'undefined' || typeof user === 'undefined') {
+            return;
+        }
+        const node = spinal_env_viewer_graph_service_1.SpinalGraphService.getRealNode(userId);
+        if (node) {
+            node.info.name.set(user.name);
+            node.info.email.set(user.email);
+            node.info.firstname.set(user.firstname);
+            node.info.userProfileId.set(user.userProfileId);
+        }
+        return node;
+    }
     deleteUser(userId) { }
-    ;
 }
 exports.SpinalTwinAdminUser = SpinalTwinAdminUser;
 //# sourceMappingURL=spinalTwinAdminUser.service.js.map

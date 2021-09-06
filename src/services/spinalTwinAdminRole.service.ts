@@ -106,7 +106,6 @@ export class SpinalTwinAdminRole {
       return;
     }
     const node = SpinalGraphService.getRealNode(roleId);
-    console.log(node);
     if (node) {
       node.info.name.set(spinalTwinRole);
     }

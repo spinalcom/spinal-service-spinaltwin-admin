@@ -82,16 +82,21 @@ class SpinalTwinAdminRole {
         });
     }
     /**
-     * @param {SpinalTwinRole|string} spinalTwinRole
+     * @param {SpinalTwinRole} spinalTwinRole
      * @param {string} roleId
      * @returns {void}
      * @memberof SpinalTwinAdminRole
      */
     updateRole(spinalTwinRole, roleId) {
-        if (typeof roleId === 'undefined') {
+        if (typeof roleId === 'undefined' ||
+            typeof spinalTwinRole === 'undefined') {
             return;
         }
-        return spinal_env_viewer_graph_service_1.SpinalGraphService.modifyNode(roleId, spinalTwinRole);
+        const node = spinal_env_viewer_graph_service_1.SpinalGraphService.getRealNode(roleId);
+        if (node) {
+            node.info.name.set(spinalTwinRole);
+        }
+        return node;
     }
     /**
      * @param {string} roleId

@@ -45,7 +45,7 @@ export declare class SpinalTwinAdminUserProfile {
      * @returns {void}
      * @memberof SpinalTwinAdminUserProfile
      */
-    updateUserProfile(userProfile: SpinalTwinUserProfile, userProfileId: string): void;
+    updateUserProfile(userProfile: SpinalTwinUserProfile, userProfileId: string): SpinalNode<any>;
     /**
      * @param {string} userProfileId
      * @param {string} roleId
