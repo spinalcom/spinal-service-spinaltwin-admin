@@ -31,13 +31,6 @@ export declare class SpinalTwinAdminUserProfile {
      * @returns {void}
      * @memberof SpinalTwinAdminUserProfile
      */
-    addRoleToUserProfile(userProfileId: string, roleId: string): Promise<boolean>;
-    /**
-     * @param {string} userProfileId
-     * @param {string} roleId
-     * @returns {void}
-     * @memberof SpinalTwinAdminUserProfile
-     */
     removeRoleToUserProfile(userProfileId: string, roleId: string): void;
     /**
      * @param {string} userProfileId

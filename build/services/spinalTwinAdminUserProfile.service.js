@@ -70,22 +70,6 @@ class SpinalTwinAdminUserProfile {
      * @returns {void}
      * @memberof SpinalTwinAdminUserProfile
      */
-    addRoleToUserProfile(userProfileId, roleId) {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (typeof userProfileId === 'undefined') {
-                return;
-            }
-            const userProfile = yield spinal_env_viewer_graph_service_1.SpinalGraphService.getRealNode(userProfileId);
-            userProfile.info.roleList.push(roleId); //comment accéder à un attribut une fois qu'on a get son node.
-            return spinal_env_viewer_graph_service_1.SpinalGraphService.modifyNode(userProfileId, userProfile);
-        });
-    }
-    /**
-     * @param {string} userProfileId
-     * @param {string} roleId
-     * @returns {void}
-     * @memberof SpinalTwinAdminUserProfile
-     */
     removeRoleToUserProfile(userProfileId, roleId) { }
     /**
      * @param {string} userProfileId
@@ -103,7 +87,6 @@ class SpinalTwinAdminUserProfile {
             node.info.name.set(userProfile.name);
             node.info.appList.set(userProfile.appList);
             node.info.buildContextList.set(userProfile.buildContextList);
-            node.info.roleList.set(userProfile.roleList);
         }
         return node;
     }

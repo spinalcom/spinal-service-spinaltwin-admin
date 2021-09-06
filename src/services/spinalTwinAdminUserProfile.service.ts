@@ -84,21 +84,6 @@ export class SpinalTwinAdminUserProfile {
    * @returns {void}
    * @memberof SpinalTwinAdminUserProfile
    */
-  public async addRoleToUserProfile(userProfileId: string, roleId: string) {
-    if (typeof userProfileId === 'undefined') {
-      return;
-    }
-    const userProfile = await SpinalGraphService.getRealNode(userProfileId);
-    userProfile.info.roleList.push(roleId); //comment accéder à un attribut une fois qu'on a get son node.
-    return SpinalGraphService.modifyNode(userProfileId, <any>userProfile);
-  }
-
-  /**
-   * @param {string} userProfileId
-   * @param {string} roleId
-   * @returns {void}
-   * @memberof SpinalTwinAdminUserProfile
-   */
   public removeRoleToUserProfile(userProfileId: string, roleId: string) {}
 
   /**
@@ -122,7 +107,6 @@ export class SpinalTwinAdminUserProfile {
       node.info.name.set(userProfile.name);
       node.info.appList.set(userProfile.appList);
       node.info.buildContextList.set(userProfile.buildContextList);
-      node.info.roleList.set(userProfile.roleList);
     }
     return node;
   }
