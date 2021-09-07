@@ -1,4 +1,4 @@
-import { SpinalNode } from "spinal-env-viewer-graph-service";
+import { SpinalNode } from 'spinal-env-viewer-graph-service';
 /**
  *
  * @export

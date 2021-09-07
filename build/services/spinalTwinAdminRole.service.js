@@ -31,7 +31,7 @@ class SpinalTwinAdminRole {
                 spinalTwinRole = { name: spinalTwinRole };
             const roleId = spinal_env_viewer_graph_service_1.SpinalGraphService.createNode(spinalTwinRole, undefined);
             let context = yield spinalTwinGraph.getContext(constant_1.ROLE_LIST);
-            const result = spinal_env_viewer_graph_service_1.SpinalGraphService.addChildInContext(context.info.id.get(), roleId, context.info.id.get(), constant_1.SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST)
+            const result = spinal_env_viewer_graph_service_1.SpinalGraphService.addChildInContext(context.info.id.get(), roleId, context.info.id.get(), constant_1.SPINALTWIN_ADMIN_SERVICE_ROLE_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST)
                 .then((res) => __awaiter(this, void 0, void 0, function* () {
                 return res;
             }))

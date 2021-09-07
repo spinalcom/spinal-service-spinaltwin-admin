@@ -25,6 +25,7 @@
 import { SpinalTwinAdminRole } from './services/spinalTwinAdminRole.service';
 import { SpinalTwinAdminUserProfile } from './services/spinalTwinAdminUserProfile.service';
 import { SpinalTwinAdminUser } from './services/spinalTwinAdminUser.service';
+import { SpinalTwinAdminGraph } from './services/spinalTwinAdminGraph.service';
 
 import { SpinalTwinRole } from './models/SpinalTwinRole.model';
 import { SpinalTwinUser } from './models/SpinalTwinUser.model';
@@ -50,8 +51,14 @@ if (typeof gRoot.spinal.SpinalTwinAdminUser === 'undefined') {
   gRoot.spinal.spinalTwinAdminUser = new SpinalTwinAdminUser();
 }
 // @ts-ignore
+if (typeof gRoot.spinal.SpinalTwinAdminGraph === 'undefined') {
+  // @ts-ignore
+  gRoot.spinal.spinalTwinAdminGraph = new SpinalTwinAdminGraph();
+}
+// @ts-ignore
 export const SpinalTwinServiceUserProfile =
   gRoot.spinal.spinalTwinAdminUserProfile;
+export const SpinalTwinServiceGraph = gRoot.spinal.spinalTwinAdminGraph;
 // @ts-ignore
 export const SpinalTwinServiceRole = gRoot.spinal.spinalTwinAdminRole;
 // @ts-ignore

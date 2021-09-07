@@ -11,6 +11,7 @@ export declare const SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_LST_PTR = "LstPt
 export declare const SPINALTWIN_ADMIN_SERVICE_APP_GROUP_RELATION_NAME = "SpinalTwinListHasAppGroup";
 export declare const SPINALTWIN_ADMIN_SERVICE_APP_RELATION_NAME = "SpinalTwinAppGroupHasApp";
 export declare const SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME = "SpinalTwinUserProfileListHasUserProfile";
+export declare const SPINALTWIN_ADMIN_SERVICE_ROLE_RELATION_NAME = "SpinalTwinRoleListHasRole";
 export declare const SPINALTWIN_ADMIN_SERVICE_USER_RELATION_NAME = "SpinalTwinUserListHasUser";
 export declare const USER_PROFILE_LIST = "UserProfile";
 export declare const USER_LIST = "UserList";

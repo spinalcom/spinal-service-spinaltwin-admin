@@ -6,7 +6,7 @@ import {
   CANNOT_CREATE_INTERNAL_ERROR,
   ROLE_LIST,
   SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST,
-  SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME,
+  SPINALTWIN_ADMIN_SERVICE_ROLE_RELATION_NAME,
 } from '../constant';
 import { SpinalTwinRole } from '../models/SpinalTwinRole.model';
 import { SpinalTwinAdminGraph } from './spinalTwinAdminGraph.service';
@@ -34,7 +34,7 @@ export class SpinalTwinAdminRole {
       context.info.id.get(),
       roleId,
       context.info.id.get(),
-      SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME,
+      SPINALTWIN_ADMIN_SERVICE_ROLE_RELATION_NAME,
       SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST
     )
       .then(async (res) => {

@@ -23,10 +23,11 @@
  *  <http://resources.spinalcom.com/licenses.pdf>.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SpinalTwinServiceUser = exports.SpinalTwinServiceRole = exports.SpinalTwinServiceUserProfile = void 0;
+exports.SpinalTwinServiceUser = exports.SpinalTwinServiceRole = exports.SpinalTwinServiceGraph = exports.SpinalTwinServiceUserProfile = void 0;
 const spinalTwinAdminRole_service_1 = require("./services/spinalTwinAdminRole.service");
 const spinalTwinAdminUserProfile_service_1 = require("./services/spinalTwinAdminUserProfile.service");
 const spinalTwinAdminUser_service_1 = require("./services/spinalTwinAdminUser.service");
+const spinalTwinAdminGraph_service_1 = require("./services/spinalTwinAdminGraph.service");
 // @ts-ignore
 const gRoot = typeof window === 'undefined' ? global : window;
 // @ts-ignore
@@ -48,7 +49,13 @@ if (typeof gRoot.spinal.SpinalTwinAdminUser === 'undefined') {
     gRoot.spinal.spinalTwinAdminUser = new spinalTwinAdminUser_service_1.SpinalTwinAdminUser();
 }
 // @ts-ignore
+if (typeof gRoot.spinal.SpinalTwinAdminGraph === 'undefined') {
+    // @ts-ignore
+    gRoot.spinal.spinalTwinAdminGraph = new spinalTwinAdminGraph_service_1.SpinalTwinAdminGraph();
+}
+// @ts-ignore
 exports.SpinalTwinServiceUserProfile = gRoot.spinal.spinalTwinAdminUserProfile;
+exports.SpinalTwinServiceGraph = gRoot.spinal.spinalTwinAdminGraph;
 // @ts-ignore
 exports.SpinalTwinServiceRole = gRoot.spinal.spinalTwinAdminRole;
 // @ts-ignore

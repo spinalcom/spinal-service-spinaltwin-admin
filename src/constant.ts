@@ -24,6 +24,8 @@ export const SPINALTWIN_ADMIN_SERVICE_APP_RELATION_NAME =
   'SpinalTwinAppGroupHasApp';
 export const SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME =
   'SpinalTwinUserProfileListHasUserProfile';
+export const SPINALTWIN_ADMIN_SERVICE_ROLE_RELATION_NAME =
+  'SpinalTwinRoleListHasRole';
 export const SPINALTWIN_ADMIN_SERVICE_USER_RELATION_NAME =
   'SpinalTwinUserListHasUser';
 
