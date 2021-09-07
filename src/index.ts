@@ -58,6 +58,7 @@ if (typeof gRoot.spinal.SpinalTwinAdminGraph === 'undefined') {
 // @ts-ignore
 export const SpinalTwinServiceUserProfile =
   gRoot.spinal.spinalTwinAdminUserProfile;
+// @ts-ignore
 export const SpinalTwinServiceGraph = gRoot.spinal.spinalTwinAdminGraph;
 // @ts-ignore
 export const SpinalTwinServiceRole = gRoot.spinal.spinalTwinAdminRole;
