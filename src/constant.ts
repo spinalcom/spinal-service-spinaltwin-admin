@@ -30,7 +30,7 @@ export const SPINALTWIN_ADMIN_SERVICE_USER_RELATION_NAME =
   'SpinalTwinUserListHasUser';
 
 //ContextName
-export const USER_PROFILE_LIST = 'UserProfile';
+export const USER_PROFILE_LIST = 'UserProfileList';
 export const USER_LIST = 'UserList';
 export const ROLE_LIST = 'RoleList';
 export const SPINAL_DESCRIPTION = 'SpinalTwinDescription';

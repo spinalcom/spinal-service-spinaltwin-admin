@@ -19,7 +19,7 @@ exports.SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME = 'SpinalTwinUserPro
 exports.SPINALTWIN_ADMIN_SERVICE_ROLE_RELATION_NAME = 'SpinalTwinRoleListHasRole';
 exports.SPINALTWIN_ADMIN_SERVICE_USER_RELATION_NAME = 'SpinalTwinUserListHasUser';
 //ContextName
-exports.USER_PROFILE_LIST = 'UserProfile';
+exports.USER_PROFILE_LIST = 'UserProfileList';
 exports.USER_LIST = 'UserList';
 exports.ROLE_LIST = 'RoleList';
 exports.SPINAL_DESCRIPTION = 'SpinalTwinDescription';
