@@ -1,4 +1,4 @@
-import { SpinalNode } from 'spinal-env-viewer-graph-service';
+import { SpinalGraph, SpinalNode } from 'spinal-env-viewer-graph-service';
 /**
  *
  * @export
@@ -12,6 +12,6 @@ export declare class SpinalTwinAdminGraph {
      * @returns {void}
      * @memberof SpinalTwinAdminGraph
      */
-    init(directory: spinal.Directory<any>, filename: string): Promise<void>;
+    init(directory: spinal.Directory<any>, filename: string): Promise<SpinalGraph<any>>;
     getContext(name?: string): Promise<SpinalNode<any>>;
 }

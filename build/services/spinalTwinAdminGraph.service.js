@@ -62,7 +62,7 @@ class SpinalTwinAdminGraph {
             model_type: 'SpinalTwin Admin',
         });
         return Promise.all(promises).then(() => {
-            return;
+            return graph;
         });
     }
     getContext(name) {

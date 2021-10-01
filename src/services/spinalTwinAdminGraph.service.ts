@@ -23,7 +23,10 @@ export class SpinalTwinAdminGraph {
    * @returns {void}
    * @memberof SpinalTwinAdminGraph
    */
-  init(directory: spinal.Directory<any>, filename: string): Promise<void> {
+  init(
+    directory: spinal.Directory<any>,
+    filename: string
+  ): Promise<SpinalGraph<any>> {
     let promises = [];
     const graph = new SpinalGraph('SpinalTwinAdmin');
     const DataListContext = new SpinalContext('DataList');
@@ -171,7 +174,7 @@ export class SpinalTwinAdminGraph {
     });
 
     return Promise.all(promises).then(() => {
-      return;
+      return graph;
     });
   }
 
