@@ -31,9 +31,9 @@ class SpinalTwinAdminGraph {
         const DataListContext = new spinal_env_viewer_graph_service_1.SpinalContext('DataList');
         const SpinaltwinDescContext = new spinal_env_viewer_graph_service_1.SpinalContext('SpinalTwinDescription');
         const UserProfileContext = new spinal_env_viewer_graph_service_1.SpinalContext('UserProfileList');
-        const UserListContext = new spinal_env_viewer_graph_service_1.SpinalContext('UserList');
+        const AppProfileContext = new spinal_env_viewer_graph_service_1.SpinalContext('AppProfileList');
         const RoleListContext = new spinal_env_viewer_graph_service_1.SpinalContext('RoleList');
-        promises.push(graph.addContext(DataListContext), graph.addContext(SpinaltwinDescContext), graph.addContext(UserListContext), graph.addContext(UserProfileContext), graph.addContext(RoleListContext));
+        promises.push(graph.addContext(DataListContext), graph.addContext(SpinaltwinDescContext), graph.addContext(AppProfileContext), graph.addContext(UserProfileContext), graph.addContext(RoleListContext));
         const read = new spinal_env_viewer_graph_service_1.SpinalNode('Lecture');
         const write = new spinal_env_viewer_graph_service_1.SpinalNode('Ecriture');
         const deleted = new spinal_env_viewer_graph_service_1.SpinalNode('Suppression');

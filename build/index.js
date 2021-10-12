@@ -23,9 +23,11 @@
  *  <http://resources.spinalcom.com/licenses.pdf>.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SpinalTwinServiceUser = exports.SpinalTwinServiceRole = exports.SpinalTwinServiceGraph = exports.SpinalTwinServiceUserProfile = void 0;
+exports.SpinalTwinAdminAppProfile = exports.SpinalTwinServiceAppProfile = exports.SpinalTwinServiceUser = exports.SpinalTwinServiceRole = exports.SpinalTwinServiceGraph = exports.SpinalTwinServiceUserProfile = void 0;
 const spinalTwinAdminRole_service_1 = require("./services/spinalTwinAdminRole.service");
 const spinalTwinAdminUserProfile_service_1 = require("./services/spinalTwinAdminUserProfile.service");
+const spinalTwinAdminAppProfile_service_1 = require("./services/spinalTwinAdminAppProfile.service");
+Object.defineProperty(exports, "SpinalTwinAdminAppProfile", { enumerable: true, get: function () { return spinalTwinAdminAppProfile_service_1.SpinalTwinAdminAppProfile; } });
 const spinalTwinAdminUser_service_1 = require("./services/spinalTwinAdminUser.service");
 const spinalTwinAdminGraph_service_1 = require("./services/spinalTwinAdminGraph.service");
 // @ts-ignore
@@ -42,6 +44,11 @@ if (typeof gRoot.spinal.SpinalTwinAdminRole === 'undefined') {
 if (typeof gRoot.spinal.SpinalTwinAdminUserProfile === 'undefined') {
     // @ts-ignore
     gRoot.spinal.spinalTwinAdminUserProfile = new spinalTwinAdminUserProfile_service_1.SpinalTwinAdminUserProfile();
+}
+// @ts-ignore
+if (typeof gRoot.spinal.SpinalTwinAdminAppProfile === 'undefined') {
+    // @ts-ignore
+    gRoot.spinal.spinalTwinAdminAppProfile = new spinalTwinAdminAppProfile_service_1.SpinalTwinAdminAppProfile();
 }
 // @ts-ignore
 if (typeof gRoot.spinal.SpinalTwinAdminUser === 'undefined') {
@@ -61,4 +68,6 @@ exports.SpinalTwinServiceGraph = gRoot.spinal.spinalTwinAdminGraph;
 exports.SpinalTwinServiceRole = gRoot.spinal.spinalTwinAdminRole;
 // @ts-ignore
 exports.SpinalTwinServiceUser = gRoot.spinal.spinalTwinAdminUser;
+// @ts-ignore
+exports.SpinalTwinServiceAppProfile = gRoot.spinal.spinalTwinAdminAppProfile;
 //# sourceMappingURL=index.js.map

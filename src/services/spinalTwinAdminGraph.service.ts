@@ -29,17 +29,17 @@ export class SpinalTwinAdminGraph {
   ): Promise<SpinalGraph<any>> {
     let promises = [];
     const graph = new SpinalGraph('SpinalTwinAdmin');
-    const DataListContext = new SpinalContext('DataList');
 
+    const DataListContext = new SpinalContext('DataList');
     const SpinaltwinDescContext = new SpinalContext('SpinalTwinDescription');
     const UserProfileContext = new SpinalContext('UserProfileList');
-    const UserListContext = new SpinalContext('UserList');
+    const AppProfileContext = new SpinalContext('AppProfileList');
     const RoleListContext = new SpinalContext('RoleList');
 
     promises.push(
       graph.addContext(DataListContext),
       graph.addContext(SpinaltwinDescContext),
-      graph.addContext(UserListContext),
+      graph.addContext(AppProfileContext),
       graph.addContext(UserProfileContext),
       graph.addContext(RoleListContext)
     );

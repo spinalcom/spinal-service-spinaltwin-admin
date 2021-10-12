@@ -15,6 +15,7 @@ export declare const SPINALTWIN_ADMIN_SERVICE_ROLE_RELATION_NAME = "SpinalTwinRo
 export declare const SPINALTWIN_ADMIN_SERVICE_USER_RELATION_NAME = "SpinalTwinUserListHasUser";
 export declare const USER_PROFILE_LIST = "UserProfileList";
 export declare const USER_LIST = "UserList";
+export declare const APP_PROFILE_LIST = "AppProfileList";
 export declare const ROLE_LIST = "RoleList";
 export declare const SPINAL_DESCRIPTION = "SpinalTwinDescription";
 export declare const DATA_LIST = "DataList";
