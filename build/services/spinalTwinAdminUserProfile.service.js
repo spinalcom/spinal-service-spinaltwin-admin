@@ -77,7 +77,7 @@ class SpinalTwinAdminUserProfile {
      * @returns {void}
      * @memberof SpinalTwinAdminUserProfile
      */
-    updateUserProfile(userProfile, userProfileId) {
+    updateUserProfile(userProfile, userProfileId, graphContext) {
         if (typeof userProfileId === 'undefined' ||
             typeof userProfile === 'undefined') {
             return;
@@ -87,6 +87,7 @@ class SpinalTwinAdminUserProfile {
             node.info.name.set(userProfile.name);
             node.info.appList.set(userProfile.appList);
             node.info.buildContextList.set(userProfile.buildContextList);
+            node.element.setElement(graphContext);
         }
         return node;
     }

@@ -96,7 +96,8 @@ export class SpinalTwinAdminUserProfile {
    */
   public updateUserProfile(
     userProfile: SpinalTwinUserProfile,
-    userProfileId: string
+    userProfileId: string,
+    graphContext: SpinalGraph<any>
   ): SpinalNode<any> {
     if (
       typeof userProfileId === 'undefined' ||
@@ -109,6 +110,7 @@ export class SpinalTwinAdminUserProfile {
       node.info.name.set(userProfile.name);
       node.info.appList.set(userProfile.appList);
       node.info.buildContextList.set(userProfile.buildContextList);
+      node.element.setElement(graphContext);
     }
     return node;
   }

@@ -38,7 +38,7 @@ export declare class SpinalTwinAdminUserProfile {
      * @returns {void}
      * @memberof SpinalTwinAdminUserProfile
      */
-    updateUserProfile(userProfile: SpinalTwinUserProfile, userProfileId: string): SpinalNode<any>;
+    updateUserProfile(userProfile: SpinalTwinUserProfile, userProfileId: string, graphContext: SpinalGraph<any>): SpinalNode<any>;
     /**
      * @param {string} userProfileId
      * @param {string} roleId
