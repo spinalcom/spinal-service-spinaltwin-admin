@@ -26,11 +26,11 @@ class SpinalTwinAdminAppProfile {
      * @returns {Promise<string>}
      * @memberof SpinalTwinAppProfile
      */
-    createAppProfile(spinalTwinAppProfile) {
+    createAppProfile(spinalTwinAppProfile, graphContext) {
         return __awaiter(this, void 0, void 0, function* () {
             if (typeof spinalTwinAppProfile === 'string')
                 spinalTwinAppProfile = { name: spinalTwinAppProfile };
-            const appId = spinal_env_viewer_graph_service_1.SpinalGraphService.createNode(spinalTwinAppProfile, undefined);
+            const appId = spinal_env_viewer_graph_service_1.SpinalGraphService.createNode(spinalTwinAppProfile, graphContext);
             let context = yield spinalTwinGraph.getContext(constant_1.APP_PROFILE_LIST);
             const result = spinal_env_viewer_graph_service_1.SpinalGraphService.addChildInContext(context.info.id.get(), appId, context.info.id.get(), constant_1.SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST)
                 .then((res) => __awaiter(this, void 0, void 0, function* () {
@@ -70,7 +70,7 @@ class SpinalTwinAdminAppProfile {
      * @returns {void}
      * @memberof SpinalTwinAppProfile
      */
-    updateAppProfile(appProfile, appProfileId) {
+    updateAppProfile(appProfile, appProfileId, graphContext) {
         if (typeof appProfileId === 'undefined' ||
             typeof appProfile === 'undefined') {
             return;
@@ -80,6 +80,7 @@ class SpinalTwinAdminAppProfile {
             node.info.name.set(appProfile.name);
             node.info.appList.set(appProfile.clientId);
             node.info.buildContextList.set(appProfile.clientSecret);
+            node.element.setElement(graphContext);
         }
         return node;
     }

@@ -1,4 +1,4 @@
-import { SpinalNode } from 'spinal-env-viewer-graph-service';
+import { SpinalGraph, SpinalNode } from 'spinal-env-viewer-graph-service';
 import { SpinalTwinAppProfile } from '../models/SpinalTwinAppProfile.model';
 /**
  *
@@ -12,7 +12,7 @@ export declare class SpinalTwinAdminAppProfile {
      * @returns {Promise<string>}
      * @memberof SpinalTwinAppProfile
      */
-    createAppProfile(spinalTwinAppProfile: SpinalTwinAppProfile | string): Promise<SpinalNode<any>>;
+    createAppProfile(spinalTwinAppProfile: SpinalTwinAppProfile | string, graphContext: SpinalGraph<any>): Promise<SpinalNode<any>>;
     /**
      * @param {string} appProfileId
      * @returns {void}
@@ -31,7 +31,7 @@ export declare class SpinalTwinAdminAppProfile {
      * @returns {void}
      * @memberof SpinalTwinAppProfile
      */
-    updateAppProfile(appProfile: SpinalTwinAppProfile, appProfileId: string): SpinalNode<any>;
+    updateAppProfile(appProfile: SpinalTwinAppProfile, appProfileId: string, graphContext: SpinalGraph<any>): SpinalNode<any>;
     /**
      * @param {string} appProfileId
      * @param {string} roleId

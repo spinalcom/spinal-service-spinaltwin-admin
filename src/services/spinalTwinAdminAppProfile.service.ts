@@ -1,4 +1,5 @@
 import {
+  SpinalGraph,
   SpinalGraphService,
   SpinalNode,
 } from 'spinal-env-viewer-graph-service';
@@ -25,14 +26,15 @@ export class SpinalTwinAdminAppProfile {
    * @memberof SpinalTwinAppProfile
    */
   public async createAppProfile(
-    spinalTwinAppProfile: SpinalTwinAppProfile | string
+    spinalTwinAppProfile: SpinalTwinAppProfile | string,
+    graphContext: SpinalGraph<any>
   ): Promise<SpinalNode<any>> {
     if (typeof spinalTwinAppProfile === 'string')
       spinalTwinAppProfile = { name: spinalTwinAppProfile };
 
     const appId = SpinalGraphService.createNode(
       spinalTwinAppProfile,
-      undefined
+      graphContext
     );
     let context = await spinalTwinGraph.getContext(APP_PROFILE_LIST);
     const result = SpinalGraphService.addChildInContext(
@@ -84,7 +86,8 @@ export class SpinalTwinAdminAppProfile {
    */
   public updateAppProfile(
     appProfile: SpinalTwinAppProfile,
-    appProfileId: string
+    appProfileId: string,
+    graphContext: SpinalGraph<any>
   ): SpinalNode<any> {
     if (
       typeof appProfileId === 'undefined' ||
@@ -97,6 +100,7 @@ export class SpinalTwinAdminAppProfile {
       node.info.name.set(appProfile.name);
       node.info.appList.set(appProfile.clientId);
       node.info.buildContextList.set(appProfile.clientSecret);
+      node.element.setElement(graphContext);
     }
     return node;
   }
