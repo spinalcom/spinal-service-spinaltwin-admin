@@ -27,15 +27,17 @@ export class SpinalTwinAdminUserProfile {
    * @memberof SpinalTwinAdminUserProfile
    */
   public async createUserProfile(
-    spinalTwinUserProfile: SpinalTwinUserProfile | string
+    spinalTwinUserProfile: SpinalTwinUserProfile | string,
+    graphContext: SpinalGraph<any>
   ): Promise<SpinalNode<any>> {
     if (typeof spinalTwinUserProfile === 'string')
       spinalTwinUserProfile = { name: spinalTwinUserProfile };
 
     const groupId = SpinalGraphService.createNode(
       spinalTwinUserProfile,
-      undefined
+      graphContext
     );
+
     let context = await spinalTwinGraph.getContext(USER_PROFILE_LIST);
     const result = SpinalGraphService.addChildInContext(
       context.info.id.get(),

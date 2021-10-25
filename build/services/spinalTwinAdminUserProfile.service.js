@@ -26,11 +26,11 @@ class SpinalTwinAdminUserProfile {
      * @returns {Promise<string>}
      * @memberof SpinalTwinAdminUserProfile
      */
-    createUserProfile(spinalTwinUserProfile) {
+    createUserProfile(spinalTwinUserProfile, graphContext) {
         return __awaiter(this, void 0, void 0, function* () {
             if (typeof spinalTwinUserProfile === 'string')
                 spinalTwinUserProfile = { name: spinalTwinUserProfile };
-            const groupId = spinal_env_viewer_graph_service_1.SpinalGraphService.createNode(spinalTwinUserProfile, undefined);
+            const groupId = spinal_env_viewer_graph_service_1.SpinalGraphService.createNode(spinalTwinUserProfile, graphContext);
             let context = yield spinalTwinGraph.getContext(constant_1.USER_PROFILE_LIST);
             const result = spinal_env_viewer_graph_service_1.SpinalGraphService.addChildInContext(context.info.id.get(), groupId, context.info.id.get(), constant_1.SPINALTWIN_ADMIN_SERVICE_USER_PROFILE_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST)
                 .then((res) => __awaiter(this, void 0, void 0, function* () {

@@ -1,7 +1,7 @@
 export interface SpinalTwinAppProfile {
     id?: string;
     name?: string;
-    clientId?: string;
-    clientSecret?: string;
+    contextList?: [];
+    tagsList?: [];
     [key: string]: any;
 }

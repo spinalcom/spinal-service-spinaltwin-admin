@@ -28,7 +28,7 @@ class SpinalTwinAdminGraph {
     init(directory, filename) {
         let promises = [];
         const graph = new spinal_env_viewer_graph_service_1.SpinalGraph('SpinalTwinAdmin');
-        const DataListContext = new spinal_env_viewer_graph_service_1.SpinalContext('DataList');
+        const DataListContext = new spinal_env_viewer_graph_service_1.SpinalContext('DigitalTwin');
         const SpinaltwinDescContext = new spinal_env_viewer_graph_service_1.SpinalContext('SpinalTwinDescription');
         const UserProfileContext = new spinal_env_viewer_graph_service_1.SpinalContext('UserProfileList');
         const AppProfileContext = new spinal_env_viewer_graph_service_1.SpinalContext('AppProfileList');
@@ -40,23 +40,23 @@ class SpinalTwinAdminGraph {
         promises.push(RoleListContext.addChildInContext(read, constant_1.SPINALTWIN_ADMIN_SERVICE_ROLE_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST), RoleListContext.addChildInContext(write, constant_1.SPINALTWIN_ADMIN_SERVICE_ROLE_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST), RoleListContext.addChildInContext(deleted, constant_1.SPINALTWIN_ADMIN_SERVICE_ROLE_RELATION_NAME, constant_1.SPINALTWIN_ADMIN_SERVICE_APP_RELATION_TYPE_PTR_LST));
         const dataRoomNode = new spinal_env_viewer_graph_service_1.SpinalNode('DataRoom');
         const maintenanceBookNode = new spinal_env_viewer_graph_service_1.SpinalNode('MaintenanceBook');
-        const operationCenterNode = new spinal_env_viewer_graph_service_1.SpinalNode('OperationBook');
+        const operationCenterNode = new spinal_env_viewer_graph_service_1.SpinalNode('OperationCenter');
         promises.push(SpinaltwinDescContext.addChildInContext(dataRoomNode, 'hasGroupApplication', 'PtrLst'), SpinaltwinDescContext.addChildInContext(maintenanceBookNode, 'hasGroupApplication', 'PtrLst'), SpinaltwinDescContext.addChildInContext(operationCenterNode, 'hasGroupApplication', 'PtrLst'));
         // App for DataRoom
-        const EquipmentCenter = new spinal_env_viewer_graph_service_1.SpinalNode('EquipmentCenter');
-        const DescriptionCenter = new spinal_env_viewer_graph_service_1.SpinalNode('DescriptionCenter');
-        const SpaceCenter = new spinal_env_viewer_graph_service_1.SpinalNode('SpaceCenter');
+        const EquipmentCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Equipment');
+        const DescriptionCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Description');
+        const SpaceCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Space');
         promises.push(dataRoomNode.addChildInContext(EquipmentCenter, 'hasApplicationDataRoom', 'PtrLst', SpinaltwinDescContext), dataRoomNode.addChildInContext(DescriptionCenter, 'hasApplicationDataRoom', 'PtrLst', SpinaltwinDescContext), dataRoomNode.addChildInContext(SpaceCenter, 'hasApplicationDataRoom', 'PtrLst', SpinaltwinDescContext));
         // App for MaintenanceBook
-        const TicketCenter = new spinal_env_viewer_graph_service_1.SpinalNode('TicketCenter');
-        const NoteCenter = new spinal_env_viewer_graph_service_1.SpinalNode('NoteCenter');
-        const AgendaCenter = new spinal_env_viewer_graph_service_1.SpinalNode('AgendaCenter');
+        const TicketCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Ticket');
+        const NoteCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Note');
+        const AgendaCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Agenda');
         promises.push(maintenanceBookNode.addChildInContext(TicketCenter, 'hasApplicationMaintenanceBook', 'PtrLst', SpinaltwinDescContext), maintenanceBookNode.addChildInContext(NoteCenter, 'hasApplicationMaintenanceBook', 'PtrLst', SpinaltwinDescContext), maintenanceBookNode.addChildInContext(AgendaCenter, 'hasApplicationMaintenanceBook', 'PtrLst', SpinaltwinDescContext));
         // App for OperationCenter
-        const InsightCenter = new spinal_env_viewer_graph_service_1.SpinalNode('InsightCenter');
-        const ControlCenter = new spinal_env_viewer_graph_service_1.SpinalNode('ControlCenter');
-        const AlarmCenter = new spinal_env_viewer_graph_service_1.SpinalNode('AlarmCenter');
-        const EnergyCenter = new spinal_env_viewer_graph_service_1.SpinalNode('EnergyCenter');
+        const InsightCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Insight');
+        const ControlCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Control');
+        const AlarmCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Alarm');
+        const EnergyCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Energy');
         promises.push(operationCenterNode.addChildInContext(InsightCenter, 'hasApplicationOperation', 'PtrLst', SpinaltwinDescContext), operationCenterNode.addChildInContext(ControlCenter, 'hasApplicationOperation', 'PtrLst', SpinaltwinDescContext), operationCenterNode.addChildInContext(AlarmCenter, 'hasApplicationOperation', 'PtrLst', SpinaltwinDescContext), operationCenterNode.addChildInContext(EnergyCenter, 'hasApplicationOperation', 'PtrLst', SpinaltwinDescContext));
         directory.force_add_file(filename, graph, {
             model_type: 'SpinalTwin Admin',

@@ -30,7 +30,7 @@ export class SpinalTwinAdminGraph {
     let promises = [];
     const graph = new SpinalGraph('SpinalTwinAdmin');
 
-    const DataListContext = new SpinalContext('DataList');
+    const DataListContext = new SpinalContext('DigitalTwin');
     const SpinaltwinDescContext = new SpinalContext('SpinalTwinDescription');
     const UserProfileContext = new SpinalContext('UserProfileList');
     const AppProfileContext = new SpinalContext('AppProfileList');
@@ -67,7 +67,7 @@ export class SpinalTwinAdminGraph {
 
     const dataRoomNode = new SpinalNode('DataRoom');
     const maintenanceBookNode = new SpinalNode('MaintenanceBook');
-    const operationCenterNode = new SpinalNode('OperationBook');
+    const operationCenterNode = new SpinalNode('OperationCenter');
 
     promises.push(
       SpinaltwinDescContext.addChildInContext(
@@ -87,9 +87,9 @@ export class SpinalTwinAdminGraph {
       )
     );
     // App for DataRoom
-    const EquipmentCenter = new SpinalNode('EquipmentCenter');
-    const DescriptionCenter = new SpinalNode('DescriptionCenter');
-    const SpaceCenter = new SpinalNode('SpaceCenter');
+    const EquipmentCenter = new SpinalNode('Equipment');
+    const DescriptionCenter = new SpinalNode('Description');
+    const SpaceCenter = new SpinalNode('Space');
 
     promises.push(
       dataRoomNode.addChildInContext(
@@ -112,9 +112,9 @@ export class SpinalTwinAdminGraph {
       )
     );
     // App for MaintenanceBook
-    const TicketCenter = new SpinalNode('TicketCenter');
-    const NoteCenter = new SpinalNode('NoteCenter');
-    const AgendaCenter = new SpinalNode('AgendaCenter');
+    const TicketCenter = new SpinalNode('Ticket');
+    const NoteCenter = new SpinalNode('Note');
+    const AgendaCenter = new SpinalNode('Agenda');
 
     promises.push(
       maintenanceBookNode.addChildInContext(
@@ -137,10 +137,10 @@ export class SpinalTwinAdminGraph {
       )
     );
     // App for OperationCenter
-    const InsightCenter = new SpinalNode('InsightCenter');
-    const ControlCenter = new SpinalNode('ControlCenter');
-    const AlarmCenter = new SpinalNode('AlarmCenter');
-    const EnergyCenter = new SpinalNode('EnergyCenter');
+    const InsightCenter = new SpinalNode('Insight');
+    const ControlCenter = new SpinalNode('Control');
+    const AlarmCenter = new SpinalNode('Alarm');
+    const EnergyCenter = new SpinalNode('Energy');
 
     promises.push(
       operationCenterNode.addChildInContext(
