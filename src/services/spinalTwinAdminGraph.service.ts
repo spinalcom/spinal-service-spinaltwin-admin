@@ -28,7 +28,7 @@ export class SpinalTwinAdminGraph {
     filename: string
   ): Promise<SpinalGraph<any>> {
     let promises = [];
-    const graph = new SpinalGraph('SpinalTwinAdmin');
+    const graph = new SpinalGraph('BosConfig');
 
     const DataListContext = new SpinalContext('DigitalTwin');
     const SpinaltwinDescContext = new SpinalContext('SpinalTwinDescription');
