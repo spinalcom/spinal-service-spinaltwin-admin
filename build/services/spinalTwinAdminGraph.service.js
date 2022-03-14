@@ -27,13 +27,16 @@ class SpinalTwinAdminGraph {
      */
     init(directory, filename) {
         let promises = [];
-        const graph = new spinal_env_viewer_graph_service_1.SpinalGraph('SpinalTwinAdmin');
+        const graph = new spinal_env_viewer_graph_service_1.SpinalGraph('BosConfig');
         const DataListContext = new spinal_env_viewer_graph_service_1.SpinalContext('DigitalTwin');
         const SpinaltwinDescContext = new spinal_env_viewer_graph_service_1.SpinalContext('SpinalTwinDescription');
         const UserProfileContext = new spinal_env_viewer_graph_service_1.SpinalContext('UserProfileList');
         const AppProfileContext = new spinal_env_viewer_graph_service_1.SpinalContext('AppProfileList');
         const RoleListContext = new spinal_env_viewer_graph_service_1.SpinalContext('RoleList');
-        promises.push(graph.addContext(DataListContext), graph.addContext(SpinaltwinDescContext), graph.addContext(AppProfileContext), graph.addContext(UserProfileContext), graph.addContext(RoleListContext));
+        const RegisterAdminContext = new spinal_env_viewer_graph_service_1.SpinalContext('RegisterAdmin');
+        const CredentialBosToAdminContext = new spinal_env_viewer_graph_service_1.SpinalContext('CredentialBosAdmin');
+        const CredentialAdminToBosContext = new spinal_env_viewer_graph_service_1.SpinalContext('CredentialAdminBos');
+        promises.push(graph.addContext(DataListContext), graph.addContext(SpinaltwinDescContext), graph.addContext(AppProfileContext), graph.addContext(UserProfileContext), graph.addContext(RoleListContext), graph.addContext(RegisterAdminContext), graph.addContext(CredentialBosToAdminContext), graph.addContext(CredentialAdminToBosContext));
         const read = new spinal_env_viewer_graph_service_1.SpinalNode('Lecture');
         const write = new spinal_env_viewer_graph_service_1.SpinalNode('Ecriture');
         const deleted = new spinal_env_viewer_graph_service_1.SpinalNode('Suppression');
