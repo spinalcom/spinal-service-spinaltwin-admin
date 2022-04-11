@@ -34,6 +34,8 @@ export class SpinalTwinAdminGraph {
     const SpinaltwinDescContext = new SpinalContext('SpinalTwinDescription');
     const UserProfileContext = new SpinalContext('UserProfileList');
     const AppProfileContext = new SpinalContext('AppProfileList');
+    const ApiContext = new SpinalContext('ApiList');
+    const OrganContext = new SpinalContext('OrganList');
     const RoleListContext = new SpinalContext('RoleList');
     const RegisterAdminContext = new SpinalContext('RegisterAdmin');
     const CredentialBosToAdminContext = new SpinalContext('CredentialBosAdmin');
@@ -46,6 +48,8 @@ export class SpinalTwinAdminGraph {
       graph.addContext(UserProfileContext),
       graph.addContext(RoleListContext),
       graph.addContext(RegisterAdminContext),
+      graph.addContext(ApiContext),
+      graph.addContext(OrganContext),
       graph.addContext(CredentialBosToAdminContext),
       graph.addContext(CredentialAdminToBosContext)
     );
