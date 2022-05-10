@@ -98,7 +98,9 @@ export class SpinalTwinAdminGraph {
     );
     // App for DataRoom
     const EquipmentCenter = new SpinalNode('Equipment');
+    EquipmentCenter.info.add_attr({ typeContext: ['BIMObjectGroupContext'] });
     const DescriptionCenter = new SpinalNode('Description');
+    DescriptionCenter.info.add_attr({ typeContext: ['geographicContext'] });
     const SpaceCenter = new SpinalNode('Space');
 
     promises.push(
@@ -123,6 +125,7 @@ export class SpinalTwinAdminGraph {
     );
     // App for MaintenanceBook
     const TicketCenter = new SpinalNode('Ticket');
+    TicketCenter.info.add_attr({ typeContext: ['SpinalSystemServiceTicket'] });
     const NoteCenter = new SpinalNode('Note');
     const AgendaCenter = new SpinalNode('Agenda');
 
@@ -148,6 +151,9 @@ export class SpinalTwinAdminGraph {
     );
     // App for OperationCenter
     const InsightCenter = new SpinalNode('Insight');
+    InsightCenter.info.add_attr({
+      typeContext: ['SpinalControlPointGroupContext', 'geographicContext'],
+    });
     const ControlCenter = new SpinalNode('Control');
     const AlarmCenter = new SpinalNode('Alarm');
     const EnergyCenter = new SpinalNode('Energy');
@@ -180,7 +186,7 @@ export class SpinalTwinAdminGraph {
     );
 
     directory.force_add_file(filename, graph, {
-      model_type: 'SpinalTwin Admin',
+      model_type: 'Configuration Bos',
     });
 
     return Promise.all(promises).then(() => {
