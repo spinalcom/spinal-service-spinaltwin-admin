@@ -100,8 +100,9 @@ export class SpinalTwinAdminGraph {
     const EquipmentCenter = new SpinalNode('Equipment');
     EquipmentCenter.info.add_attr({ typeContext: ['BIMObjectGroupContext'] });
     const DescriptionCenter = new SpinalNode('Description');
-    DescriptionCenter.info.add_attr({ typeContext: ['geographicContext'] });
+    DescriptionCenter.info.add_attr({ typeContext: [] });
     const SpaceCenter = new SpinalNode('Space');
+    SpaceCenter.info.add_attr({ typeContext: [] });
 
     promises.push(
       dataRoomNode.addChildInContext(
@@ -127,7 +128,9 @@ export class SpinalTwinAdminGraph {
     const TicketCenter = new SpinalNode('Ticket');
     TicketCenter.info.add_attr({ typeContext: ['SpinalSystemServiceTicket'] });
     const NoteCenter = new SpinalNode('Note');
+    NoteCenter.info.add_attr({ typeContext: [] });
     const AgendaCenter = new SpinalNode('Agenda');
+    AgendaCenter.info.add_attr({ typeContext: [] });
 
     promises.push(
       maintenanceBookNode.addChildInContext(
@@ -152,11 +155,20 @@ export class SpinalTwinAdminGraph {
     // App for OperationCenter
     const InsightCenter = new SpinalNode('Insight');
     InsightCenter.info.add_attr({
-      typeContext: ['SpinalControlPointGroupContext', 'geographicContext'],
+      typeContext: [],
     });
     const ControlCenter = new SpinalNode('Control');
+    ControlCenter.info.add_attr({
+      typeContext: [],
+    });
     const AlarmCenter = new SpinalNode('Alarm');
+    AlarmCenter.info.add_attr({
+      typeContext: [],
+    });
     const EnergyCenter = new SpinalNode('Energy');
+    EnergyCenter.info.add_attr({
+      typeContext: [],
+    });
 
     promises.push(
       operationCenterNode.addChildInContext(
