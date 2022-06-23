@@ -51,23 +51,35 @@ class SpinalTwinAdminGraph {
         const EquipmentCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Equipment');
         EquipmentCenter.info.add_attr({ typeContext: ['BIMObjectGroupContext'] });
         const DescriptionCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Description');
-        DescriptionCenter.info.add_attr({ typeContext: ['geographicContext'] });
+        DescriptionCenter.info.add_attr({ typeContext: [] });
         const SpaceCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Space');
+        SpaceCenter.info.add_attr({ typeContext: [] });
         promises.push(dataRoomNode.addChildInContext(EquipmentCenter, 'hasApplicationDataRoom', 'PtrLst', SpinaltwinDescContext), dataRoomNode.addChildInContext(DescriptionCenter, 'hasApplicationDataRoom', 'PtrLst', SpinaltwinDescContext), dataRoomNode.addChildInContext(SpaceCenter, 'hasApplicationDataRoom', 'PtrLst', SpinaltwinDescContext));
         // App for MaintenanceBook
         const TicketCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Ticket');
         TicketCenter.info.add_attr({ typeContext: ['SpinalSystemServiceTicket'] });
         const NoteCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Note');
+        NoteCenter.info.add_attr({ typeContext: [] });
         const AgendaCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Agenda');
+        AgendaCenter.info.add_attr({ typeContext: [] });
         promises.push(maintenanceBookNode.addChildInContext(TicketCenter, 'hasApplicationMaintenanceBook', 'PtrLst', SpinaltwinDescContext), maintenanceBookNode.addChildInContext(NoteCenter, 'hasApplicationMaintenanceBook', 'PtrLst', SpinaltwinDescContext), maintenanceBookNode.addChildInContext(AgendaCenter, 'hasApplicationMaintenanceBook', 'PtrLst', SpinaltwinDescContext));
         // App for OperationCenter
         const InsightCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Insight');
         InsightCenter.info.add_attr({
-            typeContext: ['SpinalControlPointGroupContext', 'geographicContext'],
+            typeContext: [],
         });
         const ControlCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Control');
+        ControlCenter.info.add_attr({
+            typeContext: [],
+        });
         const AlarmCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Alarm');
+        AlarmCenter.info.add_attr({
+            typeContext: [],
+        });
         const EnergyCenter = new spinal_env_viewer_graph_service_1.SpinalNode('Energy');
+        EnergyCenter.info.add_attr({
+            typeContext: [],
+        });
         promises.push(operationCenterNode.addChildInContext(InsightCenter, 'hasApplicationOperation', 'PtrLst', SpinaltwinDescContext), operationCenterNode.addChildInContext(ControlCenter, 'hasApplicationOperation', 'PtrLst', SpinaltwinDescContext), operationCenterNode.addChildInContext(AlarmCenter, 'hasApplicationOperation', 'PtrLst', SpinaltwinDescContext), operationCenterNode.addChildInContext(EnergyCenter, 'hasApplicationOperation', 'PtrLst', SpinaltwinDescContext));
         directory.force_add_file(filename, graph, {
             model_type: 'Configuration Bos',

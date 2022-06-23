@@ -78,8 +78,8 @@ class SpinalTwinAdminAppProfile {
         const node = spinal_env_viewer_graph_service_1.SpinalGraphService.getRealNode(appProfileId);
         if (node) {
             node.info.name.set(appProfile.name);
-            node.info.appList.set(appProfile.clientId);
-            node.info.buildContextList.set(appProfile.clientSecret);
+            node.info.appList.set(appProfile.appList);
+            node.info.contextList.set(appProfile.contextList);
             node.element.setElement(graphContext);
         }
         return node;
