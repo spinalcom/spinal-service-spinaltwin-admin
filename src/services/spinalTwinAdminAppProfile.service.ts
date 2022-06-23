@@ -98,7 +98,7 @@ export class SpinalTwinAdminAppProfile {
     const node = SpinalGraphService.getRealNode(appProfileId);
     if (node) {
       node.info.name.set(appProfile.name);
-      node.info.appList.set(appProfile.appList);
+      node.info.tagsList.set(appProfile.tagsList);
       node.info.contextList.set(appProfile.contextList);
       node.element.setElement(graphContext);
     }
