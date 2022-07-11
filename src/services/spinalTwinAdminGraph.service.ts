@@ -40,6 +40,7 @@ export class SpinalTwinAdminGraph {
     const RegisterAdminContext = new SpinalContext('RegisterAdmin');
     const CredentialBosToAdminContext = new SpinalContext('CredentialBosAdmin');
     const CredentialAdminToBosContext = new SpinalContext('CredentialAdminBos');
+    const HubUser = new SpinalContext('HubUser');
 
     promises.push(
       graph.addContext(DataListContext),
@@ -51,7 +52,8 @@ export class SpinalTwinAdminGraph {
       graph.addContext(ApiContext),
       graph.addContext(OrganContext),
       graph.addContext(CredentialBosToAdminContext),
-      graph.addContext(CredentialAdminToBosContext)
+      graph.addContext(CredentialAdminToBosContext),
+      graph.addContext(HubUser)
     );
     const read = new SpinalNode('Lecture');
     const write = new SpinalNode('Ecriture');
