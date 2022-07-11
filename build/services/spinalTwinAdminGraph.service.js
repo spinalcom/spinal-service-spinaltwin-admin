@@ -38,7 +38,8 @@ class SpinalTwinAdminGraph {
         const RegisterAdminContext = new spinal_env_viewer_graph_service_1.SpinalContext('RegisterAdmin');
         const CredentialBosToAdminContext = new spinal_env_viewer_graph_service_1.SpinalContext('CredentialBosAdmin');
         const CredentialAdminToBosContext = new spinal_env_viewer_graph_service_1.SpinalContext('CredentialAdminBos');
-        promises.push(graph.addContext(DataListContext), graph.addContext(SpinaltwinDescContext), graph.addContext(AppProfileContext), graph.addContext(UserProfileContext), graph.addContext(RoleListContext), graph.addContext(RegisterAdminContext), graph.addContext(ApiContext), graph.addContext(OrganContext), graph.addContext(CredentialBosToAdminContext), graph.addContext(CredentialAdminToBosContext));
+        const HubUser = new spinal_env_viewer_graph_service_1.SpinalContext('HubUser');
+        promises.push(graph.addContext(DataListContext), graph.addContext(SpinaltwinDescContext), graph.addContext(AppProfileContext), graph.addContext(UserProfileContext), graph.addContext(RoleListContext), graph.addContext(RegisterAdminContext), graph.addContext(ApiContext), graph.addContext(OrganContext), graph.addContext(CredentialBosToAdminContext), graph.addContext(CredentialAdminToBosContext), graph.addContext(HubUser));
         const read = new spinal_env_viewer_graph_service_1.SpinalNode('Lecture');
         const write = new spinal_env_viewer_graph_service_1.SpinalNode('Ecriture');
         const deleted = new spinal_env_viewer_graph_service_1.SpinalNode('Suppression');
